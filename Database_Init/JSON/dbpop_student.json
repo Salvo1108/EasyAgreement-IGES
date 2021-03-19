@@ -1,0 +1,145 @@
+[{
+
+
+
+
+     "StudentID" : "0512103456",
+     "DegreeCourse" : "Computer Science",
+     "Address" : "Via delle Vie 121",
+     "City" : "Porto Sant'Elpidio",
+     "Email" : "d.devito@studenti.unisa.it",
+     "Surname" : "De Vito",
+     "Name" : "Danny",
+     "CV"   : null,
+     "IDCard" : null,
+     "Password" :"DannyDeVito1"
+    },
+
+
+    {
+     "StudentID" : "0512156789",
+    "DegreeCourse" : "Computer Science",
+    "Address" : "Via delle Vie 122",
+    "City" : "Salerno",
+    "Email" : "f.califano@studenti.unisa.it",
+    "Surname" : "Califano",
+    "Name" : "Francesco",
+    "CV"   : null,
+    "IDCard" : null,
+    "Password" :"FraCalifano1"
+   },
+
+
+
+   { "StudentID" : "0512123451",
+   "DegreeCourse" : "Computer Science",
+   "Address" : "Via delle Vie 123",
+   "City" : "Bagnoli Irpino",
+   "Email" : "d.marino@studenti.unisa.it",
+   "Surname" : "Marino",
+   "Name" : "Domenico",
+   "CV"   : null,
+   "IDCard" : null,
+   "Password" :"MarDomenico1"
+  },
+
+
+
+  { "StudentID" : "0512127897",
+  "DegreeCourse" : "Computer Science",
+  "Address" : "Via delle Vie 124",
+  "City" : "Battipaglia",
+  "Email" : "l.deamicis@studenti.unisa.it",
+  "Surname" : "De Amicis",
+  "Name" : "Lorenzo",
+  "CV"   : null,
+  "IDCard" : null,
+  "Password" :"DeLorenzo1"
+ },
+
+
+
+ { "StudentID" : "05121898076",
+ "DegreeCourse" : "Computer Science",
+ "Address" : "Via delle Vie 125",
+ "City" : "Erchie",
+ "Email" : "f.vitolo@studenti.unisa.it",
+ "Surname" : "Vitolo",
+ "Name" : "Fernando",
+ "CV"   : null,
+ "IDCard" : null,
+ "Password" :"VitoFerdi1"
+},
+
+
+
+{ "StudentID" : "0512109876",
+    "DegreeCourse" : "Computer Science",
+    "Address" : "Via delle Vie 126",
+    "City" : "Portogruaro",
+    "Email" : "u.scognamiglio999@studenti.unisa.it",
+    "Surname" : "Scognamiglio",
+    "Name" : "Ugopiero",
+    "CV"   : null,
+    "IDCard" : null,
+    "Password" :"ScoUgopiero1"
+   },
+
+
+
+{ "StudentID" : "0512178654",
+    "DegreeCourse" : "Computer Science",
+    "Address" : "Via delle Vie 127",
+    "City" : "San Cipriano Picentino",
+    "Email" : "g.carpentieri1@studenti.unisa.it",
+    "Surname" : "Carpentieri",
+    "Name" : "Giovanni",
+    "CV"   : null,
+    "IDCard" : null,
+    "Password" :"CarpGiovanni1"
+   },
+
+
+
+   { "StudentID" : "0512156432",
+       "DegreeCourse" : "Computer Science",
+       "Address" : "Via delle Vie 128",
+       "City" : "Civitanova Marche",
+       "Email" : "g.cantaieri1@studenti.unisa.it",
+       "Surname" : "Cantaieri",
+       "Name" : "Giovanni",
+       "CV"   : null,
+       "IDCard" : null,
+       "Password" :"CantGiovanni1"
+      },
+
+
+
+      { "StudentID" : "0512190876",
+          "DegreeCourse" : "Computer Science",
+          "Address" : "Via delle Vie 129",
+          "City" : "Ancona",
+          "Email" : "g.mosconi@studenti.unisa.it",
+          "Surname" : "Mosconi",
+          "Name" : "Germano",
+          "CV"   : null,
+          "IDCard" : null,
+          "Password" :"MoscGermano1"
+         },
+
+
+
+         { "StudentID" : "0512134231",
+             "DegreeCourse" : "Computer Science",
+             "Address" : "Via delle Vie 130",
+             "City" : "Ardea",
+             "Email" : "m.popovic@studenti.unisa.it",
+             "Surname" : "Popovic",
+             "Name" : "Mikhail",
+             "CV"   : null,
+             "IDCard" : null,
+             "Password" :"PopoMikhail1"
+
+
+
+}]
