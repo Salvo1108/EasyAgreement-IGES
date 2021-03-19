@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: models/message.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: models/message.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var MongoClient = require('mongodb').MongoClient
+var ObjectID = require('mongodb').ObjectId
+
+// Database URL
+const url = 'mongodb://localhost:27017/easyagreement'
+
+// Database name
+const dbName = 'easyagreement'
+
+class Message {
+  constructor () {
+    this.senderID = null
+    this.recipientID = null
+    this.text = null
+    this.date = null
+  }
+
+  // Getter methods
+  
+  /**
+   * @returns {String} - return senderID
+   */
+  getSenderID () {
+    return this.senderID
+  }
+
+  /**
+   * @returns {String} - return recipientID
+   */
+  getRecipientID () {
+    return this.recipientID
+  }
+
+  /**
+   * @returns {String} - return text
+   */
+  getText () {
+    return this.text
+  }
+
+  /**
+   * @returns {String} - return date
+   */
+  getDate () {
+    return this.date
+  }
+
+  // setter method
+  
+  /**
+   * set text
+   * @param {String} text
+   */
+  setText (text) {
+    this.text = text
+  }
+
+  /**
+   * set date
+   * @param {string} date 
+   */
+  setDate (date) {
+    this.date = date
+  }
+
+  /**
+   * set senderID
+   * @param {string} sender 
+   */
+  setSenderID (sender) {
+    this.senderID = sender
+  }
+
+  /**
+   * set recipientID
+   * @param {String} recipient 
+   */
+  setRecipientID (recipient) {
+    this.recipientID = recipient
+  }
+
+  /**
+   * This method inserts the message 
+   * @param {Object} message - the message to insert
+   * @returns {Promise} - return a promise
+   */
+  static insertMessage (message) {
+    return new Promise(function (resolve, reject) {
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+        if (err) reject(err)
+        var dbo = db.db(dbName)
+        dbo.collection('Message').insertOne(message, function (err, result) {
+          if (err) reject(err)
+          resolve(result.insertedId)
+          db.close()
+        })
+      })
+    })
+  }
+
+  /**
+   * This method removes the message 
+   * @param {Object} message - the message to remove
+   * @returns {Promise} - return a promise
+   */
+  static removeMessage (messageID) {
+    return new Promise(function (resolve, reject) {
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+        if (err) reject(err)
+        var dbo = db.db(dbName)
+        dbo.collection('Message').deleteOne({ _id: ObjectID(messageID) }, function (err) {
+          if (err) reject(err)
+          db.close()
+          resolve()
+        })
+      })
+    })
+  }
+
+  /**
+   * This method update the message 
+   * @param {String} id - the id of message
+   * @param {value} value - new text
+   * @returns {Promise} - return a promise
+   */
+  static updateMessage (id, value) {
+    return new Promise(function (resolve, reject) {
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+        if (err) reject(err)
+        var dbo = db.db(dbName)
+        dbo.collection('Message').updateOne({ _id: ObjectID(id) }, { $set: { text: value } }, function (err, result) {
+          if (err) reject(err)
+          db.close()
+          resolve()
+        })
+      })
+    })
+  }
+
+  /**
+   * This method gets the chat between two users
+   * @param {String} senderID - chat's sender 
+   * @param {String} recipientID - chat's recipient
+   * @returns {Promise} - return a promise
+   */
+  static getTextChat (senderID, recipientID) {
+    return new Promise(function (resolve, reject) {
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+        if (err) reject(err)
+        var dbo = db.db(dbName)
+        var senderMessages = null
+        var recipientMesssages = null
+        dbo.collection('Message').find({ senderID: senderID, recipientID: recipientID }).toArray(function (err, result) {
+          if (err) reject(err)
+          senderMessages = result
+        })
+        dbo.collection('Message').find({ senderID: recipientID, recipientID: senderID }).toArray(function (err, result) {
+          if (err) reject(err)
+          recipientMesssages = result
+          resolve({ sender: senderMessages, recipient: recipientMesssages })
+          db.close()
+        })
+      })
+    })
+  }
+
+  /**
+ * This method refreshes the message cache
+ * @param {String} receiverID - The receiver's id
+ * @param {String} senderID - The sender's id
+ * @param {Boolean} value - The state cache value
+ * @returns {Object} - The update result
+  */
+  static changeStateCache (receiverID, senderID, value) {
+    return new Promise(function (resolve, reject) {
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+        if (err) reject(err)
+        var dbo = db.db(dbName)
+        dbo.collection('Cache').findOne({ receiverID: receiverID, senderID: senderID }, function (err, result) {
+          if (err) reject(err)
+          if (result != null) {
+            dbo.collection('Cache').updateOne({ receiverID: receiverID, senderID: senderID }, { $set: { boolean: value } }, function (err, result) {
+              if (err) reject(err)
+              db.close()
+              resolve()
+            })
+          } else {
+            dbo.collection('Cache').insertOne({ receiverID: receiverID, senderID: senderID, boolean: value }, function (err, result) {
+              if (err) reject(err)
+              db.close()
+              resolve()
+            })
+          }
+        })
+      })
+    })
+  }
+
+  /**
+ * This method gets all cache of message
+ * @param {String} receiverID - The receiver's email
+ * @returns {Array} - The message cache
+ */
+  static getAllCache (receiverID) {
+    return new Promise(function (resolve, reject) {
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+        if (err) reject(err)
+        var dbo = db.db(dbName)
+        dbo.collection('Cache').find({ receiverID: receiverID }).toArray(function (err, result) {
+          if (err) reject(err)
+          var all = []
+          if (result != null) {
+            for (var i = 0; result[i] != null; i++) {
+              if (result[i].boolean) all.push(result[i])
+            }
+          }
+          resolve(all)
+        })
+      })
+    })
+  }
+}
+
+module.exports = Message
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-LearningAgreement.html">LearningAgreement</a></li><li><a href="module-Request.html">Request</a></li></ul><h3>Classes</h3><ul><li><a href="AcademicTutor.html">AcademicTutor</a></li><li><a href="Administrator.html">Administrator</a></li><li><a href="externalTutor.html">externalTutor</a></li><li><a href="HostOrganization.html">HostOrganization</a></li><li><a href="Notification.html">Notification</a></li><li><a href="Student.html">Student</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addExtTutor">addExtTutor</a></li><li><a href="global.html#addHostOrg">addHostOrg</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#deleteExTutor">deleteExTutor</a></li><li><a href="global.html#deleteHostOrg">deleteHostOrg</a></li><li><a href="global.html#disapproveAcademicTutor">disapproveAcademicTutor</a></li><li><a href="global.html#disapproveExternalTutor">disapproveExternalTutor</a></li><li><a href="global.html#generateRequest">generateRequest</a></li><li><a href="global.html#getAllCache">getAllCache</a></li><li><a href="global.html#getAllContacts">getAllContacts</a></li><li><a href="global.html#getAllMessages">getAllMessages</a></li><li><a href="global.html#getAllNotification">getAllNotification</a></li><li><a href="global.html#getAllRequests">getAllRequests</a></li><li><a href="global.html#getAllVersions">getAllVersions</a></li><li><a href="global.html#getByEmail">getByEmail</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getHostOrganization">getHostOrganization</a></li><li><a href="global.html#getNotificationCacheState">getNotificationCacheState</a></li><li><a href="global.html#getRequest">getRequest</a></li><li><a href="global.html#getRequestDetails">getRequestDetails</a></li><li><a href="global.html#getStatus">getStatus</a></li><li><a href="global.html#getVersion">getVersion</a></li><li><a href="global.html#hashPassword">hashPassword</a></li><li><a href="global.html#idHandler">idHandler</a></li><li><a href="global.html#insertNotification">insertNotification</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#refreshMessageCache">refreshMessageCache</a></li><li><a href="global.html#refreshNotificationCache">refreshNotificationCache</a></li><li><a href="global.html#removeMessage">removeMessage</a></li><li><a href="global.html#removeNotification">removeNotification</a></li><li><a href="global.html#retrieveAll">retrieveAll</a></li><li><a href="global.html#saveLaAcademicTutor">saveLaAcademicTutor</a></li><li><a href="global.html#saveLaExternalTutor">saveLaExternalTutor</a></li><li><a href="global.html#saveLaStudent">saveLaStudent</a></li><li><a href="global.html#saveMessage">saveMessage</a></li><li><a href="global.html#searchUser">searchUser</a></li><li><a href="global.html#sendLaAcademicTutor">sendLaAcademicTutor</a></li><li><a href="global.html#sendLaExternalTutor">sendLaExternalTutor</a></li><li><a href="global.html#sendLaStudent">sendLaStudent</a></li><li><a href="global.html#signup">signup</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateExternalTutor">updateExternalTutor</a></li><li><a href="global.html#updateMessage">updateMessage</a></li><li><a href="global.html#updatePassword">updatePassword</a></li><li><a href="global.html#validateDataAcademicTutor">validateDataAcademicTutor</a></li><li><a href="global.html#validateDataExternalTutor">validateDataExternalTutor</a></li><li><a href="global.html#validateDataStudent">validateDataStudent</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed Jan 15 2020 19:25:03 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
