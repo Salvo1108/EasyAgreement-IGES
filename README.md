@@ -3,7 +3,7 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 
-# EasyAgreement
+# EasyAgreement - IGES
 The "EasyAgreement - IGES" is a copy of the original "EasyAgreement". This project is used for the Software Engineering, Management and Evolution exam. The original design was project is meant as an online platform aimed at the semplification of the communication process between student, academic tutor and external tutor concerning the compilation and acceptance of a Learning Agreement document.
 
 ## Getting started
