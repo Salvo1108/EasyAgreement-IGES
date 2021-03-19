@@ -4,7 +4,7 @@
 
 
 # EasyAgreement
-The "EasyAgreement" project is meant as an online platform aimed at the semplification of the communication process between student, academic tutor and external tutor concerning the compilation and acceptance of a Learning Agreement document.
+The "EasyAgreement - IGES" is a copy of the original "EasyAgreement". This project is used for the Software Engineering, Management and Evolution exam. The original design was project is meant as an online platform aimed at the semplification of the communication process between student, academic tutor and external tutor concerning the compilation and acceptance of a Learning Agreement document.
 
 ## Getting started
 
@@ -137,20 +137,10 @@ It's possible run complex path expressions, see to: https://github.com/standard/
 
 ## Authors
 
-Project manager: 
-* **Domenico Marino** - *EasyAgreement* - [DomenicoM92](https://github.com/DomenicoM92)
-* **Francesco Califano** - *EasyAgreement* - [FranCali](https://github.com/FranCali)
-
 Team Members:
-* **Alessio Ambruoso** - *EasyAgreement* - [aleambruoso](https://github.com/aleambruoso)
-* **Armando Soddisfatto** - *EasyAgreement* - [asoddix](https://github.com/asoddix)
-* **Luigi Pasetti** - *EasyAgreement* - [F0xd1e](https://github.com/F0xd1e)
-* **Marco Borrelli** - *EasyAgreement* - [marcol8b](https://github.com/marcol8b)
-* **Marco Ciano** - *EasyAgreement* - [marcociano](https://github.com/marcociano)
-* **Roberto Veneruso** - *EasyAgreement* - [rveneruso](https://github.com/rveneruso)
-* **Salvatore Amideo** - *EasyAgreement* - [Salvo1108](https://github.com/Salvo1108)
-* **Veronica Volpicelli** - *EasyAgreement* - [Chouch0](https://github.com/Chouch0)
-
+* **Alice Vidoni** - *EasyAgreement - IGES* - 
+* **Fabio Santini** - *EasyAgreement - IGES* - 
+* **Salvatore Amideo** - *EasyAgreement - IGES* - 
 
 ## License
 
