@@ -13,7 +13,7 @@ The "EasyAgreement - IGES" is a copy of the original "EasyAgreement". This proje
 4) Aggiunta funzionalità di gestione colloqui (aggiunta di un nuovo profilo in db: Commissione Mobilità Internazionale) con conseguente assegnazione di punteggio e stilazione graduatoria.
 5) Aggiunta funzionalità per la visualizzazione della graduatoria. (Profilo Studente)
 
-
+#########
 1) Graphic improvements
 2) Added functionality for viewing the annual call for Erasmus. (Student Profile)
 3) Added functionality of forwarding the application to the External Tutor (Student Profile) with consequent notification to the External Tutor.
