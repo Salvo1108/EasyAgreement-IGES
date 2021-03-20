@@ -6,6 +6,21 @@
 # EasyAgreement - IGES
 The "EasyAgreement - IGES" is a copy of the original "EasyAgreement". This project is used for the Software Engineering, Management and Evolution exam. The original design was project is meant as an online platform aimed at the semplification of the communication process between student, academic tutor and external tutor concerning the compilation and acceptance of a Learning Agreement document.
 
+# EasyAgreement - IGES - Change Request
+1) Migliorie Grafiche
+2) Aggiunta funzionalità per la visualizzazione del bando annuale per l'Erasmus. (Profilo Studente)
+3) Aggiunta funzionalità di inoltro candidatura al Tutor Esterno (Profilo Studente) con conseguente notifica al Tutor Esterno.
+4) Aggiunta funzionalità di gestione colloqui (aggiunta di un nuovo profilo in db: Commissione Mobilità Internazionale) con conseguente assegnazione di punteggio e stilazione graduatoria.
+5) Aggiunta funzionalità per la visualizzazione della graduatoria. (Profilo Studente)
+
+
+1) Graphic improvements
+2) Added functionality for viewing the annual call for Erasmus. (Student Profile)
+3) Added functionality of forwarding the application to the External Tutor (Student Profile) with consequent notification to the External Tutor.
+4) Interview management functionality added (addition of a new profile in db: International Mobility Commission) with consequent assignment of points and ranking list.
+5) Added functionality for viewing the ranking. (Student Profile)
+
+
 ## Getting started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See 
@@ -13,8 +28,9 @@ deployment for notes on how to deploy the project on a live system.
 
 
 ### Prerequisites
-First of all, you will need a machine running Ubuntu.
+First of all, you will need a machine running Ubuntu. You can also use other operating systems such as Windows, MAC, just depending on the component to be installed follow the online guides
 
+(UBUNTU)
 In order to execute a correct installation of the software you must:
 
 *	Download and install ‘MongoDB’ database software from here: https://bit.ly/2sOVMn8
