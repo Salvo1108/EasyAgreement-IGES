@@ -7,11 +7,9 @@
 The "EasyAgreement - IGES" is a copy of the original "EasyAgreement". This project is used for the Software Engineering, Management and Evolution exam. The original design was project is meant as an online platform aimed at the semplification of the communication process between student, academic tutor and external tutor concerning the compilation and acceptance of a Learning Agreement document.
 
 # EasyAgreement - IGES - Change Request
-1) Migliorie Grafiche
-2) Aggiunta funzionalità per la visualizzazione del bando annuale per l'Erasmus. (Profilo Studente)
-3) Aggiunta funzionalità di inoltro candidatura al Tutor Esterno (Profilo Studente) con conseguente notifica al Tutor Esterno.
-4) Aggiunta funzionalità di gestione colloqui (aggiunta di un nuovo profilo in db: Commissione Mobilità Internazionale) con conseguente assegnazione di punteggio e stilazione graduatoria.
-5) Aggiunta funzionalità per la visualizzazione della graduatoria. (Profilo Studente)
+1) Aggiunta funzionalità per la visualizzazione del bando annuale per l'Erasmus. (Profilo Studente)
+2) Aggiunta funzionalità di gestione colloqui (aggiunta di un nuovo profilo in db: Commissione Mobilità Internazionale) con conseguente assegnazione di punteggio e stilazione graduatoria.
+3) Aggiunta funzionalità per la visualizzazione della graduatoria. (Profilo Studente)
 
 #########
 1) Graphic improvements
