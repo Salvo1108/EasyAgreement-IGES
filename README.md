@@ -12,11 +12,9 @@ The "EasyAgreement - IGES" is a copy of the original "EasyAgreement". This proje
 3) Aggiunta funzionalità per la visualizzazione della graduatoria. (Profilo Studente)
 
 #########
-1) Graphic improvements
-2) Added functionality for viewing the annual call for Erasmus. (Student Profile)
-3) Added functionality of forwarding the application to the External Tutor (Student Profile) with consequent notification to the External Tutor.
-4) Interview management functionality added (addition of a new profile in db: International Mobility Commission) with consequent assignment of points and ranking list.
-5) Added functionality for viewing the ranking. (Student Profile)
+1) Added functionality for viewing the annual call for Erasmus. (Student Profile)
+2) Interview management functionality added (addition of a new profile in db: International Mobility Commission) with consequent assignment of points and ranking list.
+3) Added functionality for viewing the ranking. (Student Profile)
 
 
 ## Getting started
