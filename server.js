@@ -16,6 +16,7 @@ var messageControl = require('./app/controllers/messageControl')
 var requestControl = require('./app/controllers/requestControl')
 var notificationControl = require('./app/controllers/notificationControl')
 var viewListControl = require('./app/controllers/viewListControl')
+var appuntamentoControl = require('./app/controllers/appuntamentoControl')
 var session = require('express-session')
 const multer = require('multer')
 var fs = require('fs')
@@ -95,6 +96,34 @@ app.get('/compileLAStudent.html', function (req, res) {
   }
 })
 
+app.get('/gestioneColloqui.html', function (req, res) {
+  if (req.session.utente != null) {
+    if (req.session.utente.type == 'commission') {
+      res.render('gestioneColloquio.ejs')
+    } else {
+      res.cookie('onlyForCommission', '1')
+      res.redirect('/index.html')
+    }
+  } else {
+    res.cookie('cannotAccess', '1')
+    res.redirect('/')
+  }
+})
+
+app.get('/graduatoriaPunteggio.html', function (req, res) {
+  if (req.session.utente != null) {
+    if (req.session.utente.type == 'commission') {
+      res.render('graduatoriaPunteggio.ejs')
+    } else {
+      res.cookie('onlyForCommission', '1')
+      res.redirect('/index.html')
+    }
+  } else {
+    res.cookie('cannotAccess', '1')
+    res.redirect('/')
+  }
+})
+
 app.get('/viewLA.html', function (req, res) {
   if (req.session.utente != null) {
     if (req.session.utente.type == 'student') {
@@ -109,7 +138,7 @@ app.get('/viewLA.html', function (req, res) {
   }
 })
 
-app.get('/getAllVersions', function (req, res) {
+app.get('/getAllVersions', function (req, res) {s
   if (req.session.utente != null) {
     if (req.session.utente.type == 'student') {
       var getVersionsPr = learningAgreementControl.getAllVersions(req.session.utente.utente.Email)
@@ -1124,6 +1153,37 @@ app.post('/toviewInfo', function (req, res) {
     }
     get.then(function (result) {
       res.render('viewInfo', { type: req.query.type, user: result })
+    })
+  } else {
+    res.cookie('cannotAccess', '1')
+    res.redirect('/')
+  }
+})
+
+
+app.post('/insertAppointment', function (req, res) {
+  var appuntamento = appuntamentoControl.insertAppuntamento(req, res)
+  appuntamento.then(function (result) {
+      if (result) {
+        res.cookie('insertAppunta', '1')
+        res.redirect('/index.html')
+      } else {
+        res.redirect('/index.html')
+      }
+    })
+})
+
+
+
+app.post('/colloquioStudente', function (req, res) {
+  if (req.session.utente != null) {
+    var get
+    if (req.query.type == 'student') {
+      get = studentControl.getStudent(req.query.id)
+    }
+    get.then(function (result) {
+      console.log(result)
+      res.render('calendario', { type: req.query.type, user: result })
     })
   } else {
     res.cookie('cannotAccess', '1')

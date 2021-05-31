@@ -36,6 +36,13 @@
                            display: none;
                         }
 
+                        .updatedati.commission.text-center{ 
+                            width: 950px;
+                            height: 950px;
+                            margin: 0 auto;
+                            margin-left: 115px;
+                         }
+
                         .updatedatiAdmin{
                             width: 700px;
                             height:800px;

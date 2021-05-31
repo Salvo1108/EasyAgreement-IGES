@@ -25,12 +25,14 @@ function insert () {
       const actutorData = fs.readFileSync('Database_Init/JSON/dbpop_actutor.json')
       const extTutorData = fs.readFileSync('Database_Init/JSON/dbpop_exttutor.json')
       const hostOrgData = fs.readFileSync('Database_Init/JSON/dbpop_hostorg.json')
+      const commInternazionaleData = fs.readFileSync('Database_Init/JSON/dbpop_commInternazionale.json')
 
       const students = JSON.parse(studentData)
       const admin = JSON.parse(adminData)
       const actutor = JSON.parse(actutorData)
       const exttutor = JSON.parse(extTutorData)
       const hostorg = JSON.parse(hostOrgData)
+      const commInternazionale = JSON.parse(commInternazionaleData)
 
       for (var i = 0; students[i] != null; i++) {
         students[i].Password = hash.hashPassword(students[i].Password)
@@ -43,6 +45,9 @@ function insert () {
       }
       for (var i = 0; exttutor[i] != null; i++) {
         exttutor[i].Password = hash.hashPassword(exttutor[i].Password)
+      }
+      for (var i = 0; commInternazionale[i] != null; i++) {
+        commInternazionale[i].Password = hash.hashPassword(commInternazionale[i].Password)
       }
 
       dbo.collection('Student').insertMany(students, function (err, result) {
@@ -60,16 +65,19 @@ function insert () {
               dbo.collection('HostOrganization').insertMany(hostorg, function (err, result) {
                 if (err) throw err
                 console.log('Succesfully inserted into database ' + result.insertedCount + ' host organizations')
-                dbo.createCollection('current_LearningAgreement', function (err) {
+                dbo.collection('Commission').insertMany(commInternazionale, function (err, result) {
                   if (err) throw err
-                  console.log('Succesfully created the collection current_LearningAgreement')
-                  dbo.createCollection('Request', function (err, result) {
-                    if (err) throw err
-                    console.log('Succesfully created the collection Request')
-                    dbo.createCollection('LearningAgreement_revision', function (err) {
+                  console.log('Succesfully inserted into database ' + result.insertedCount + ' Commission')
+                    dbo.createCollection('current_LearningAgreement', function (err) {
                       if (err) throw err
-                      console.log('Succesfully created the collection LearningAgreement_revision.')
-                      resolve()
+                      console.log('Succesfully created the collection current_LearningAgreement')
+                      dbo.createCollection('Request', function (err, result) {
+                        if (err) throw err
+                        console.log('Succesfully created the collection Request')
+                        dbo.createCollection('LearningAgreement_revision', function (err) {
+                          if (err) throw err
+                          console.log('Succesfully created the collection LearningAgreement_revision.')
+                          resolve()
                     })
                   })
                 })
@@ -80,4 +88,5 @@ function insert () {
       })
     })
   })
+})
 }

@@ -207,6 +207,41 @@
                         </div>
                     </div>
                     <% } %>
+
+                    <%if(session.utente.type == "commission"){%>
+                        <div class="page-inner py-5" id="CommissionView" >
+                            <h1 class="mt-8">Riepilogo Dati Anagrafici</h1>
+                            <br>
+                            <div class="text-center" id="viewp">
+                                <ul>
+                                    <li class="list-group-item text-left"><span class="pull-left"><strong>Nome:&nbsp;</strong></span> <%= session.utente.utente.name %> </li>
+                                    <li class="list-group-item text-left"><span class="pull-left"><strong>Cognome:&nbsp;</strong></span> <%= session.utente.utente.surname %></li>
+                                    <li class="list-group-item text-left"><span class="pull-left"><strong>Email:&nbsp;</strong></span> <%= session.utente.utente.email %></li>
+                                </ul>
+                                <button class = "btn btn-secondary btn-round" onclick = "showEdit()">Modifica</button>
+                                <div class="updatedati commission text-center">
+                        
+                                    <form id="formUpdatePass" method="post" action="/updatePassword">
+                                        <h4 class="mt-4">Modifica password</h4>
+                                        <div class="form-label-groupAT">
+                                            <input type="password" id="inputOldPassword" class="form-control" name="inputOldPassword" placeholder="Vecchia Password"  >
+                                            <span id="errOldPassword">Vecchia Password errata</span>
+                                        </div>
+                                        <div class="form-label-groupAT">
+                                            <input type="password" id="inputPassword" class="form-control" name="inputPassword" placeholder="Nuova Password"  >
+                                            <span id="errPassword">Nuova Password non valida</span>
+                                        </div>
+                                        <div class="form-label-groupAT">
+                                            <input type="password" id="inputConfirmPassword" class="form-control" name="inputConfirmPassword" placeholder="Ripeti Password"  >
+                                            <span id="errConfirmPassword">Password errata </span>
+                                        </div>
+                                        <button class="btn btn-secondary btn-round form-group" type="submit" class="saveButton">Modifica password</button>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
         </div>
 <%- include ('footer') %>
 <script>

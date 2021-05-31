@@ -60,7 +60,10 @@ function dropDb(){
                                 dbo.collection('Cache').deleteMany({}, function (err, result) {
                                   if (err) throw err
                                   console.log('Succesfully deleted ' + result.deletedCount + ' cache')
-                                  resolve()
+                                  dbo.collection('Commission').deleteMany({}, function (err, result) {
+                                    if (err) throw err
+                                    console.log('Succesfully deleted ' + result.deletedCount + ' Commission')
+                                    resolve()
                                 })
                               })
                             })

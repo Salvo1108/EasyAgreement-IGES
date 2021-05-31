@@ -24,6 +24,10 @@
                             <span> <%=  session.utente.utente.name %>
                                 <span class="user-level">Amministratore</span>
                             </span>
+                        <%} if(session.utente.type == "commission") { %>
+                            <span> <%=  session.utente.utente.name %>
+                                <span class="user-level">Commissario Internazionale</span>
+                            </span>
                         <%} %>
                     </a>
                     <div class="clearfix"></div>
@@ -37,7 +41,13 @@
                     </span>
                     <h4 class="text-section">Opzioni</h4>
                 </li>
-            <%if(session.utente.type == "student") {%>            
+            <%if(session.utente.type == "student") {%>   
+                <li class="nav-item">
+                    <a href='https://web.unisa.it/uploads/rescue/164/4613/bando-erasmus-2021-2022.pdf'>
+                        <i class="fas fa-file-alt"></i>
+                        <p>Visualizza Bando</p>
+                    </a>
+                </li>         
                 <li class="nav-item">
                     <a href="compileLAStudent.html">
                         <i class="fas fa-file-contract"></i>
@@ -115,6 +125,22 @@
                 </li>
                
                 
+            <%} %>
+            <%if(session.utente.type == "commission") {%>
+                <li class="nav-item">
+                    <a href="/gestioneColloqui.html">
+                        <i class="fas fa-file-alt"></i>
+                        <p>Gestione <br>Colloqui</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>Assegna<br>Punteggio</p>
+                    </a>
+                </li>
+               
+
             <%} %>
         </div>
     </div>

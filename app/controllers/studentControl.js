@@ -146,3 +146,19 @@ exports.updatePassword = function (req, res) {
     }
   })
 }
+
+
+/**
+ * This method get student by email
+ * @param {Object} req - The HTTP request
+ * @param {Object} res - The HTTP response
+ * @returns {Boolean}  - It returns true if the update was successfull, else false
+  */
+exports.getStudent = function (id) {
+  return new Promise(function (resolve) {
+    var get = StudentModel.findByEmail(id)
+    get.then(function (result) {
+      resolve({ Name: result.getName(), Surname: result.getSurname(), Email: result.getEmail()})
+    })
+  })
+}

@@ -3,6 +3,7 @@ var studentModel = require('../models/student.js')
 var academicTutorModel = require('../models/academicTutor.js')
 var externalTutorModel = require('../models/externaltutor.js')
 var administratorModel = require('../models/administrator.js')
+var commissionModel = require('../models/commisioneInter.js')
 /**
  * This method authenticates the user to the system
  * @param {Object} req - The HTTP request
@@ -44,7 +45,8 @@ exports.login = function (req, res) {
           * @param {result} resultS - The result of the findByEmail function (about student)
           * @param {result} resultA - The result of the findByEmail function (about academic tutor)
           * @param {result} resultE - The result of the findByEmail function (about external tutor)
-          * @param {result} resultAd- The result of the findByEmail function (about administrator
+          * @param {result} resultAd- The result of the findByEmail function (about administrator)
+          * @param {result} resultComm- The result of the findByEmail function (about commission)
           */
     checkStudent.then(function (resultS) {
       if (resultS == null) {
@@ -57,9 +59,26 @@ exports.login = function (req, res) {
                 var checkAdmin = administratorModel.findByEmail(username)
                 checkAdmin.then(function (resultAd) {
                   if (resultAd == null) {
+                    var checkCommission = commissionModel.findByEmail(username)
+                    checkCommission.then(function (resultComm) {
+                  if (resultComm == null) {
                     res.cookie('errLogin', '1')
                     resolve(false)
                   } else {
+                    if (hash.checkPassword(resultComm.getPassword().hash, resultComm.getPassword().salt, password)) {
+                      var commissionSession = {
+                        utente: resultComm,
+                        type: 'commission'
+                      }
+                      res.cookie('logEff', '1')
+                      resolve(commissionSession)
+                    } else {
+                      res.cookie('errLogin', '1')
+                      resolve(false)
+                    }
+                  }
+                })
+                } else {
                     if (hash.checkPassword(resultAd.getPassword().hash, resultAd.getPassword().salt, password)) {
                       var adminSession = {
                         utente: resultAd,

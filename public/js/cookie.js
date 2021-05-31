@@ -75,12 +75,14 @@ $(document).ready(function () {
   var alreadyRegEx = getCookie('errAlreadyRegEx')
   var insertHEff = getCookie('insertHEff')
   var insertEff = getCookie('insertEff')
+  var insertAppunta = getCookie('insertAppunta')
   var errOrganizationEx = getCookie('errExOrganizationName')
   var onlyAdmin = getCookie('onlyForAdmin')
   var onlyStudent = getCookie('onlyForStudent')
   var onlyAcademic = getCookie('onlyForAcademic')
   var onlyExternal = getCookie('onlyForExternal')
   var onlyTutor = getCookie('onlyForTutor')
+  var onlyCommission = getCookie('onlyForCommission')
 
   if (errAddressH == '1') {
     $('#errAddress').css('display', 'block')
@@ -96,6 +98,11 @@ $(document).ready(function () {
   if (insertHEff == '1') {
     swal('Inserimento effettuato', 'organizzazione ospitante inserita con successo', 'success')
     document.cookie = 'insertHEff=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
+
+  if (insertAppunta == '1') {
+    swal('Perfetto!', 'Appuntamento organizzato con successo', 'success')
+    document.cookie = 'insertAppunta=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
 
   if (alreadyRegH == '1') {
@@ -394,4 +401,10 @@ $(document).ready(function () {
     swal('Errore', 'Questa funzionalità è limitata ai Tutor', 'error')
     document.cookie = 'onlyForTutor=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
+
+  if (onlyCommission== '1') {
+    swal('Errore', 'Questa funzionalità è limitata alla Commissione Internazionale', 'error')
+    document.cookie = 'onlyForCommission=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
+
 })
