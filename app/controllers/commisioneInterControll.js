@@ -1,5 +1,5 @@
 var hash = require('./hash.js')
-var commisioneModel = require('../models/commisioneInter.js')
+var commissioneModel = require('../models/commisioneInter.js')
 /**
  * This method updates the commission password
  * @param {Object} req - The HTTP request
@@ -34,7 +34,7 @@ exports.update = function (req, res) {
     }
     if (hash.checkPassword(req.session.utente.utente.password.hash, req.session.utente.utente.password.salt, oldPassword)) {
       var passwordHashed = hash.hashPassword(password)
-      var checkPass = commisioneModel.updatePassword(passwordHashed, req.session.utente.utente.email)
+      var checkPass = commissioneModel.updatePassword(passwordHashed, req.session.utente.utente.email)
       /**
           * It checks the result of updatePassword function and updates the Commission session
           * @param  {Object} result - The result of updatePassword function (about Commission)
@@ -51,5 +51,80 @@ exports.update = function (req, res) {
       res.cookie('errOldPassword', '1')
       resolve(false)
     }
+  })
+}
+
+/**
+ * This method inserts an commissione internazionale
+ * @param {Object} req - The HTTP req
+ * @param {Object} res - The HTTP res
+ * @returns {Boolean}  - This method returns true if the insert of external tutor was successfull, else false
+ */
+ exports.addCommisInter = function (req, res) {
+  return new Promise(function (resolve, reject) {
+    var name = req.body.inputNameEx
+    var surname = req.body.inputSurnameEx
+    var email = req.body.inputEmailEx
+    var password = req.body.inputPassword
+    var repassword = req.body.inputRePassword
+
+    var isRight = true
+    if (password != repassword) {
+      isRight = false
+    }
+
+    isRight = true
+    if ((name == null) || (name.length <= 1) || (!/^[A-Za-z]+$/.test(name))) {
+      res.cookie('errCommisIntern', '1')
+      isRight = false
+    }
+
+    if ((surname == null) || (surname.length <= 1) || (!/^[A-Za-z]+$/.test(surname))) {
+      res.cookie('errSurnameCommiInter', '1')
+      isRight = false
+    }
+
+    if ((email == null) || (email.length <= 6) || (!/[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9]){1,}?/.test(email))) {
+      res.cookie('errEmailCommiss', '1')
+      isRight = false
+    }
+
+    if ((password == null) || (password.length <= 7) || (!/^[A-Za-z0-9]+$/.test(password))) {
+      res.cookie('errPassword', '1')
+      isRight = false
+    }
+
+    if (repassword != password) {
+      res.cookie('errPasswordConfirm', '1')
+      isRight = false
+    }
+
+    if (!isRight) {
+      resolve(false)
+      return
+    }
+
+    // hashing e salt of password
+    var passwordHashed = hash.hashPassword(password)
+
+    // Create external tutor object
+    var commission = new commissioneModel()
+    commission.setSurname(surname)
+    commission.setName(name)
+    commission.setEmail(email)
+    commission.setPassword(passwordHashed)
+
+    var checkC = commissioneModel.findByEmail(email)
+    checkC .then(function (result) {
+      if (!result) {
+        resolve(false)
+        return
+      }
+      if (result) {
+        // Save tutor in database
+        commissioneModel.addCommiInter(commission)
+        resolve(true)
+      }
+    })
   })
 }

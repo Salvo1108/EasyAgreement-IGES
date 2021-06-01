@@ -27,8 +27,7 @@
           <div class="page-inner py-5">
               <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                   <div>
-                      <h2 class="text-white pb-2 fw-bold">Gestione Appuntamento <%=user.Name%> <%=user.Surname%></h2>
-                      <h5 class="text-white op-7 mb-2">Seleziona la data dell'appuntamento</h5>
+                      <h2 class="text-white pb-2 fw-bold">Calendario Colloqui</h2>
                   </div>
               </div>
           </div>
@@ -46,39 +45,13 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-
+   
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
-      header: {
-        center: 'addEventButton',
-      },
-      customButtons: {
-        addEventButton: {
-          text: 'Aggiungi Colloquio',
-          click: function() {
-            var dateStr = prompt('Inserisci la data del colloquio.(YYYY-MM-GG)');
-            var date = new Date(dateStr + 'T00:00:00'); // will be in local time
-
-            if (!isNaN(date.valueOf())) { // valid?
-              calendar.addEvent({
-                title: "Colloquio" + " ",
-                start: date,
-                allDay: true
-              });
-              alert('');
-            } else {
-              alert('Data Sbagliata');
-            }
-          }
-        }
-      },
-      events: [
-      {
-            title: 'All Day Event',
-            start: '2021-05-28'
-        },
-
-      ]
+      events: {
+      url: '/getallAppuntamenti',
+      cache: true
+    }
     });
 
     calendar.render();

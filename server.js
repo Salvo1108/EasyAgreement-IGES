@@ -17,6 +17,7 @@ var requestControl = require('./app/controllers/requestControl')
 var notificationControl = require('./app/controllers/notificationControl')
 var viewListControl = require('./app/controllers/viewListControl')
 var appuntamentoControl = require('./app/controllers/appuntamentoControl')
+var commissionControl = require('./app/controllers/commisioneInterControll')
 var session = require('express-session')
 const multer = require('multer')
 var fs = require('fs')
@@ -109,6 +110,40 @@ app.get('/gestioneColloqui.html', function (req, res) {
     res.redirect('/')
   }
 })
+
+app.get('/visualizzaCalendario.html', function (req, res) {
+  if (req.session.utente != null) {
+    if (req.session.utente.type == 'commission') {
+      res.render('calendario.ejs');
+    }else {
+      res.cookie('onlyForCommission', '1')
+      res.redirect('/index.html')
+    }
+  } else {
+    res.cookie('cannotAccess', '1')
+    res.redirect('/')
+  }
+})
+
+app.get('/getallAppuntamenti', function (req, res) {
+  if (req.session.utente != null) {
+    if (req.session.utente.type == 'commission') {
+        var getAllAppuntamenti = appuntamentoControl.getAllAppointments()
+        getAllAppuntamenti.then(function (data) {
+          if (data) {
+            res.json(data)
+          }
+        })
+      }else {
+      res.cookie('onlyForCommission', '1')
+      res.redirect('/index.html')
+    }
+  } else {
+    res.cookie('cannotAccess', '1')
+    res.redirect('/')
+  }
+})
+
 
 app.get('/graduatoriaPunteggio.html', function (req, res) {
   if (req.session.utente != null) {
@@ -1102,6 +1137,20 @@ app.get('/addExtTutor', function (req, res) {
   }
 })
 
+app.get('/addCommissioneInternazionale', function (req, res) {
+  if (req.session.utente != null) {
+    if (req.session.utente.type == 'admin') {
+      res.render('admin/incomi')
+    } else {
+      res.cookie('onlyForAdmin', '1')
+      res.render('index')
+    }
+  } else {
+    res.cookie('cannotAccess', '1')
+    res.redirect('/')
+  }
+})
+
 app.post('/addExtTutorF', function (req, res) {
   if (req.session.utente != null) {
     if (req.session.utente.type == 'admin') {
@@ -1113,6 +1162,29 @@ app.post('/addExtTutorF', function (req, res) {
         } else {
           res.cookie('errAlreadyRegEx', '1')
           res.redirect('/addExtTutor')
+        }
+      })
+    } else {
+      res.cookie('onlyForAdmin', '1')
+      res.render('index')
+    }
+  } else {
+    res.cookie('cannotAccess', '1')
+    res.redirect('/')
+  }
+})
+
+app.post('/addCommiInter', function (req, res) {
+  if (req.session.utente != null) {
+    if (req.session.utente.type == 'admin') {
+      var administratorAddCommiss = commissionControl.addCommisInter(req, res)
+      administratorAddCommiss.then(function (result) {
+        if (result) {
+          res.cookie('insertCommiIntern', '1')
+          res.redirect('/addCommissioneInternazionale')
+        } else {
+          res.cookie('alreadyCommiInter', '1')
+          res.redirect('/addCommissioneInternazionale')
         }
       })
     } else {
@@ -1173,23 +1245,6 @@ app.post('/insertAppointment', function (req, res) {
     })
 })
 
-
-
-app.post('/colloquioStudente', function (req, res) {
-  if (req.session.utente != null) {
-    var get
-    if (req.query.type == 'student') {
-      get = studentControl.getStudent(req.query.id)
-    }
-    get.then(function (result) {
-      console.log(result)
-      res.render('calendario', { type: req.query.type, user: result })
-    })
-  } else {
-    res.cookie('cannotAccess', '1')
-    res.redirect('/')
-  }
-})
 
 app.post('/deleteHostOrg', function (req, res) {
   if (req.session.utente != null && req.session.utente.type == 'admin') {

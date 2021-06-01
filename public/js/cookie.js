@@ -68,13 +68,18 @@ $(document).ready(function () {
   var errContatti = getCookie('errContatti')
   var errNameEx = getCookie('errExTutorName')
   var errSurnameEx = getCookie('errExTutorSurname')
+  var errSurnameCommiInter = getCookie('errSurnameCommiInter')
   var errEmailEx = getCookie('errExTutorEmail')
+  var errEmailCommiss = getCookie('errEmailCommiss')
   var errAddressH = getCookie('errHAddress')
   var errExTutorName = getCookie('errExTutorName')
+  var errCommisIntern = getCookie('errCommisIntern')
   var alreadyRegH = getCookie('errAlreadyRegH')
   var alreadyRegEx = getCookie('errAlreadyRegEx')
+  var alreadyCommiInter = getCookie('alreadyCommiInter')
   var insertHEff = getCookie('insertHEff')
   var insertEff = getCookie('insertEff')
+  var insertCommiIntern = getCookie('insertCommiIntern')
   var insertAppunta = getCookie('insertAppunta')
   var errOrganizationEx = getCookie('errExOrganizationName')
   var onlyAdmin = getCookie('onlyForAdmin')
@@ -93,6 +98,10 @@ $(document).ready(function () {
   if (insertEff == '1') {
     swal('Inserimento effettuato', 'tutor esterno inserito con successo', 'success')
     document.cookie = 'insertEff=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
+  if (insertCommiIntern == '1') {
+    swal('Inserimento effettuato', 'Commissario Internazionale inserito con successo', 'success')
+    document.cookie = 'insertCommiIntern=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
 
   if (insertHEff == '1') {
@@ -114,6 +123,10 @@ $(document).ready(function () {
     swal('Errore', 'tutor esterno già presente', 'error')
     document.cookie = 'errAlreadyRegEx=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
+  if (alreadyCommiInter == '1') {
+    swal('Errore', 'Commissario Internazionale già presente', 'error')
+    document.cookie = 'alreadyCommiInter=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
   if (errErasmusCode == '1') {
     $('#errErasmusCode').css('display', 'block')
     $('#inputErasmusCode').addClass('errClass')
@@ -130,6 +143,11 @@ $(document).ready(function () {
     $('#errNameEx').css('display', 'block')
     $('#inputNameEx').addClass('errClass')
     document.cookie = 'errExTutorName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
+  if (errCommisIntern== '1') {
+    $('#errNameEx').css('display', 'block')
+    $('#inputNameEx').addClass('errClass')
+    document.cookie = 'errCommisIntern=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
 
   if (errContatti == '1') {
@@ -159,10 +177,20 @@ $(document).ready(function () {
     $('#inputSurnameEx').addClass('errClass')
     document.cookie = 'errExTutorSurname=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
+  if (errSurnameCommiInter == '1') {
+    $('#errSurnameEx').css('display', 'block')
+    $('#inputSurnameEx').addClass('errClass')
+    document.cookie = 'errSurnameCommiInter=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
   if (errEmailEx == '1') {
     $('#errEmailEx').css('display', 'block')
     $('#inputEmailEx').addClass('errClass')
     document.cookie = 'errExTutorEmail=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
+  if (errEmailCommiss== '1') {
+    $('#errEmailEx').css('display', 'block')
+    $('#inputEmailEx').addClass('errClass')
+    document.cookie = 'errEmailCommiss=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
 
   if (errOrganization == '1') {

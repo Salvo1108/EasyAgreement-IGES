@@ -9,59 +9,45 @@ const dbName = 'easyagreement'
 
 class Appuntamento {
   constructor () {
-    this.studentID = null
-    this.schedule = null
-    this.date = null
+    this.title = null
+    this.start = null
   }
 
   // Getter methods
   
   /**
-   * @returns {String} - return studentID
+   * @returns {String} - return title
    */
-  getStudentID () {
-    return this.studentID
+  getTitle () {
+    return this.title
   }
 
   /**
-   * @returns {String} - return surnameCommis
+   * @returns {String} - return start
    */
-  getSchedule () {
-    return this.schedule
-  }
-
-  /**
-   * @returns {String} - return date
-   */
-  getDate () {
-    return this.date
+  getStart() {
+    return this.start
   }
 
   // setter method
   
   /**
-   * set date
-   * @param {String} date
+   * set title
+   * @param {String} title
    */
-  setDate (date) {
-    this.date = date
+  setTitle (title) {
+    this.title = "Studente: " + title
   }
 
   /**
-   * set studentID
-   * @param {string} idStudent
+   * set start
+   * @param {string} date
+   * @param {string} schedule
    */
-  setStudentID (idStudent) {
-    this.studentID = idStudent
+  setStart (date,schedule) {
+    this.start = date + "T" + schedule + ":00"
   }
 
-  /**
-   * set Schedule
-   * @param {String} orario
-   */
-  setSchedule(orario) {
-    this.schedule = orario
-  }
 
   /**
    * This method inserts the appointment
@@ -102,26 +88,19 @@ class Appuntamento {
     })
   }
 
-
   /**
- * This method gets all appointment by studentID
- * @param {String} studentID - The all appointment for studentID
- * @returns {Array} - The all appointment
- */
-  static getAllAppuntamentiByStudentID (studentID) {
+   * This method gets all appointment 
+   * @returns {Promise} - return a promise
+   */
+  static getAllAppuntamenti () {
     return new Promise(function (resolve, reject) {
       MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) reject(err)
         var dbo = db.db(dbName)
-        dbo.collection('Appuntamento').find({ studentID: studentID }).toArray(function (err, result) {
+        dbo.collection('Appuntamento').find().toArray(function (err, result) {
           if (err) reject(err)
-          var all = []
-          if (result != null) {
-            for (var i = 0; result[i] != null; i++) {
-              if (result[i].boolean) all.push(result[i])
-            }
-          }
-          resolve(all)
+          resolve(result)
+          db.close()
         })
       })
     })

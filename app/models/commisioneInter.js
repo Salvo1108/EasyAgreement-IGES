@@ -110,6 +110,20 @@ class Commission {
     })
   }
 
+  static addCommiInter (CommiInter) {
+    return new Promise(function (resolve, reject) {
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+        if (err) reject(err)
+        var dbo = db.db(dbName)
+        dbo.collection('Commission').insertOne(CommiInter, function (err) {
+          if (err) throw err
+          resolve()
+          db.close()
+        })
+      })
+    })
+  }
+
   /**
    * This method update the commission password 
    * @param {String} password - the new commission password 

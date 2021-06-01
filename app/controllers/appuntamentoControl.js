@@ -1,26 +1,15 @@
 const AppuntamentoModel = require('../models/appuntamento')
 /**
- * This method retrieves all the notification 
- * @param {String} id - The notification's id by id
+ * This method retrieves all appointment
+* @param {Object} req - The HTTP req
  * @param {Object} res - The HTTP response
  * @returns {Int} - 
  */
-exports.getAllNotification = function (id, res) {
+exports.getAllAppointments = function () {
   return new Promise(function (resolve, reject) {
-    var notifications = NotificationModel.retrieveAll(id)
-    notifications.then(function (result) {
+    var appointments = AppuntamentoModel.getAllAppuntamenti()
+    appointments.then(function (result) {
       if (result.length > 0) {
-        for (var i = 0; result[i] != null; i++) {
-          result[i].compareData = new Date(result[i].date.year, result[i].date.month - 1, result[i].date.day, result[i].date.hour, result[i].date.minutes, result[i].date.seconds)
-        }
-        result.sort(function (a, b) {
-          if (a.compareData < b.compareData) return -1
-          if (a.compareData > b.compareData) return 1
-          return 0
-        })
-        for (i = 0; result[i] != null; i++) {
-          delete result[i].compareData
-        }
         resolve(result)
       } else {
         resolve(null)
@@ -56,9 +45,8 @@ exports.insertAppuntamento = function (req, res) {
     var studentID = req.query.studentID
     var schedule = req.body.inputSchedule
     var appuntamento = new AppuntamentoModel()
-    appuntamento.setStudentID(studentID)
-    appuntamento.setSchedule(schedule)
-    appuntamento.setDate(date)
+    appuntamento.setTitle(studentID)
+    appuntamento.setStart(date,schedule)
     var inserted = AppuntamentoModel.insertAppuntamento(appuntamento)
     inserted.then(function (result) {
       resolve(result)
