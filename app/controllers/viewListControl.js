@@ -2,6 +2,7 @@ var academicTutorModel = require('../models/academicTutor')
 var externalTutorModel = require('../models/externaltutor')
 var hostOrganizationModel = require('../models/hostorganization')
 var studentModel = require('../models/student')
+var commissioneModel = require('../models/commisioneInter')
 
 /**
  * This method retrieves the user's informations
@@ -10,7 +11,13 @@ var studentModel = require('../models/student')
  */
 exports.retrieveAll = function (type) {
   return new Promise(function (resolve, reject) {
-    if (type == 'student') {
+    if (type == 'commissioneInter') {
+      var getCI = commissioneModel.RetrieveAll()
+      getCI.then(function (result) {
+        resolve(result)
+      })
+    } 
+    else if (type == 'student') {
       var getS = studentModel.RetrieveAll()
       getS.then(function (result) {
         resolve(result)

@@ -68,12 +68,15 @@ $(document).ready(function () {
   var errContatti = getCookie('errContatti')
   var errNameEx = getCookie('errExTutorName')
   var errSurnameEx = getCookie('errExTutorSurname')
-  var errSurnameCommiInter = getCookie('errSurnameCommiInter')
+
+  var errNameCI = getCookie('errComInterName')
+  var errSurnameCI = getCookie('errComInterSurname')
+  var errEmailCI = getCookie('errComInterEmail')
+
+
   var errEmailEx = getCookie('errExTutorEmail')
-  var errEmailCommiss = getCookie('errEmailCommiss')
   var errAddressH = getCookie('errHAddress')
   var errExTutorName = getCookie('errExTutorName')
-  var errCommisIntern = getCookie('errCommisIntern')
   var alreadyRegH = getCookie('errAlreadyRegH')
   var alreadyRegEx = getCookie('errAlreadyRegEx')
   var alreadyCommiInter = getCookie('alreadyCommiInter')
@@ -144,11 +147,6 @@ $(document).ready(function () {
     $('#inputNameEx').addClass('errClass')
     document.cookie = 'errExTutorName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
-  if (errCommisIntern== '1') {
-    $('#errNameEx').css('display', 'block')
-    $('#inputNameEx').addClass('errClass')
-    document.cookie = 'errCommisIntern=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-  }
 
   if (errContatti == '1') {
     $('#errContatti').css('display', 'block')
@@ -177,20 +175,37 @@ $(document).ready(function () {
     $('#inputSurnameEx').addClass('errClass')
     document.cookie = 'errExTutorSurname=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
-  if (errSurnameCommiInter == '1') {
-    $('#errSurnameEx').css('display', 'block')
-    $('#inputSurnameEx').addClass('errClass')
-    document.cookie = 'errSurnameCommiInter=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+
+
+
+
+
+  if (errNameCI== '1') {
+    $('#errNameCI').css('display', 'block')
+    $('#inputNameCI').addClass('errClass')
+    document.cookie = 'errComInterName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
+  if (errSurnameCI == '1') {
+    $('#errSurnameCI').css('display', 'block')
+    $('#inputSurnameCI').addClass('errClass')
+    document.cookie = 'errComInterSurname=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
+  if (errEmailCI== '1') {
+    $('#errEmailCI').css('display', 'block')
+    $('#inputEmailCI').addClass('errClass')
+    document.cookie = 'errComInterEmail=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
+
+
+
+
+
+
+
   if (errEmailEx == '1') {
     $('#errEmailEx').css('display', 'block')
     $('#inputEmailEx').addClass('errClass')
     document.cookie = 'errExTutorEmail=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-  }
-  if (errEmailCommiss== '1') {
-    $('#errEmailEx').css('display', 'block')
-    $('#inputEmailEx').addClass('errClass')
-    document.cookie = 'errEmailCommiss=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
 
   if (errOrganization == '1') {

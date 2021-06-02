@@ -157,6 +157,47 @@ class Commission {
       })
     })
   }
+/**
+   * This method deletes an commis by email
+   * @param {email} - commissario  email
+   * @returns {Boolean} - It returns true if the delete was sucessfull, else false
+   */
+ static deleteCommInter (email) {
+  return new Promise(function (resolve, reject) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+      if (err) reject(err)
+      var dbo = db.db(dbName)
+      dbo.collection('Commission').findOneAndDelete({ E_mail: email }, function (err, result) {
+        if (err) throw err
+        if (result.value != null) {
+          resolve(true)
+        } else {
+          resolve(false)
+        }
+        db.close()
+      })
+    })
+  })
+}
+/**
+ * Retrieve all commission
+ *
+ * @returns {promise} - return promise
+ */
+ static RetrieveAll () {
+  return new Promise(function (resolve, reject) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+      if (err) reject(err)
+      var dbo = db.db(dbName)
+
+      dbo.collection('Commission').find().toArray(function (err, result) {
+        if (err) throw err
+        resolve(result)
+        db.close()
+      })
+    })
+  })
+}
 }
 
 module.exports = Commission

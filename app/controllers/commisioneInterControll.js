@@ -1,5 +1,28 @@
 var hash = require('./hash.js')
 var commissioneModel = require('../models/commisioneInter.js')
+
+
+/**
+ * This method deletes an commissarrio
+ * @param {String} email - The commissarrio email
+ * @param {Object} res - The HTTP res
+ * @returns {Boolean}  - This method returns true if the delete of external tutor was successfull, else false
+ */
+ exports.deleteCommissionInternazionale = function (email, res) {
+  return new Promise(function (resolve, reject) {
+    var delcommInter = commissioneModel.deleteCommInter(email)
+    delExTutor.then(function (result) {
+      if (!result) {
+        resolve(false)
+      } else {
+        resolve(true)
+      }
+    })
+  })
+}
+
+
+
 /**
  * This method updates the commission password
  * @param {Object} req - The HTTP request
@@ -58,13 +81,13 @@ exports.update = function (req, res) {
  * This method inserts an commissione internazionale
  * @param {Object} req - The HTTP req
  * @param {Object} res - The HTTP res
- * @returns {Boolean}  - This method returns true if the insert of external tutor was successfull, else false
+ * @returns {Boolean}  - This method returns true if the insert of commissione internazionale was successfull, else false
  */
  exports.addCommisInter = function (req, res) {
   return new Promise(function (resolve, reject) {
-    var name = req.body.inputNameEx
-    var surname = req.body.inputSurnameEx
-    var email = req.body.inputEmailEx
+    var name = req.body.inputNameCI
+    var surname = req.body.inputSurnameCI
+    var email = req.body.inputEmailCI
     var password = req.body.inputPassword
     var repassword = req.body.inputRePassword
 
@@ -75,17 +98,17 @@ exports.update = function (req, res) {
 
     isRight = true
     if ((name == null) || (name.length <= 1) || (!/^[A-Za-z]+$/.test(name))) {
-      res.cookie('errCommisIntern', '1')
+      res.cookie('errComInterName', '1')
       isRight = false
     }
 
     if ((surname == null) || (surname.length <= 1) || (!/^[A-Za-z]+$/.test(surname))) {
-      res.cookie('errSurnameCommiInter', '1')
+      res.cookie('errComInterSurname', '1')
       isRight = false
     }
 
     if ((email == null) || (email.length <= 6) || (!/[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9]){1,}?/.test(email))) {
-      res.cookie('errEmailCommiss', '1')
+      res.cookie('errComInterEmail', '1')
       isRight = false
     }
 
@@ -114,17 +137,8 @@ exports.update = function (req, res) {
     commission.setEmail(email)
     commission.setPassword(passwordHashed)
 
-    var checkC = commissioneModel.findByEmail(email)
-    checkC .then(function (result) {
-      if (!result) {
-        resolve(false)
-        return
-      }
-      if (result) {
-        // Save tutor in database
-        commissioneModel.addCommiInter(commission)
-        resolve(true)
-      }
-    })
+    
+    commissioneModel.addCommiInter(commission)
+    resolve(true)
   })
 }

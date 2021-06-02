@@ -1261,6 +1261,21 @@ app.post('/deleteHostOrg', function (req, res) {
   }
 })
 
+app.post('/deleteCommissioneInternazionale', function (req, res) {
+  if (req.session.utente != null && req.session.utente.type == 'admin') {
+    var deleteCommis = commissionControl.deleteCommissionInternazionale(req.body.email, res)
+    deleteCommis.then(function (result) {
+      if (result) {
+        res.json(true)
+      } else {
+        res.json(false)
+      }
+    })
+  } else {
+    res.json('no')
+  }
+})
+
 app.post('/deleteExTutor', function (req, res) {
   if (req.session.utente != null && req.session.utente.type == 'admin') {
     var deleteHost = tutorControl.deleteExTutor(req.body.email, res)

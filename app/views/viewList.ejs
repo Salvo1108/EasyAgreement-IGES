@@ -53,6 +53,7 @@
                             <option id="externalTutor" value="externalTutor">Tutor Esterni</option>
                             <option id="hostOrganization" value="host">Organizzazioni Ospitanti</option>
                             <option id="academicTutor" value="academicTutor">Tutor Accademici</option>
+                            <option id="commissioneInter" value="commissioneInter">Commissione Internazionale</option>
                         </select>
                     <%}%>
                 </div>       
@@ -61,6 +62,22 @@
         </div>
     </div>
 <script>
+        function appendCIList(commissione){
+        $('.elements').append([
+            '<div class="card">',
+		        '<div class="card__image"></div>',
+		            '<div class="card__copy">',
+				        '<h3>'+commissione.name+' '+commissione.surname+'</h3>',
+					    '<h4 class="toPass">'+commissione.email+'</h4>',
+                        '<%if(session.utente.type == "admin"){%>',
+                        '<button class="btn btn-secondary btn-round form-group" class="deleteUserButton" id="delUser" onclick="clickDelete(commissione.email)">Elimina utente</button>',
+                        '<%}%>',
+			        '</div>',
+		        '</div>',
+        '</div>'].join('\n'))
+
+    }
+
     function appendAcademicList(academic){
         $('.elements').append([
             '<div class="card">',
@@ -130,7 +147,18 @@
                     if(result.length == 0){
                         appendNothing();
                     }
-                    if(selected == 'externalTutor'){
+                    if(selected == 'commissioneInter'){
+                        $('.elements').append('<section class="cards clearfix">')
+                        for(i=0; result[i]!=null; i++){
+                            if(i>1){
+                                if((i%3) == 0){
+                                    $('.elements').append('</section>')
+                                }
+                            }
+                            appendCIList(result[i])
+                        }
+                    }
+                    else if(selected == 'externalTutor'){
                         $('.elements').append('<section class="cards clearfix">')
                         for(i=0; result[i]!=null; i++){
                             if(i>1){
@@ -172,7 +200,38 @@
         let type = $('.custom-select').val()
         let id = $(el.parentNode).children('.toPass').text()
         console.log(id)
-        if(type == "host"){
+        if(type == "commission"){
+            swal({
+                title: 'Sei sicuro?',
+                text: 'Non potrai più tornare indietro!',
+                icon: 'warning',
+                showCancelButton: true,
+                buttons: true,
+                dangerMode: true
+            })
+            .then(function (yes) {
+                if (yes) {
+                    $.ajax({
+                        type:'POST',
+                        url:'/deleteCommissioneInternazionale',
+                        data:{email:commissione.email},
+                        success: function(result){
+                            if(result == "no"){
+                                swal('Errore', 'La cancellazione di un utente è limitata all\'admin', 'error')
+                            }
+                            else if(result){
+                                $(el.parentNode.parentNode).remove()
+                                swal('Eliminata', 'Commissario Internazionale eliminato con successo', 'success')
+                            }
+                            else{
+                                swal('Non eliminata', 'è stato impossibile eliminara il commissarrio', 'error')
+                            }
+                        }
+                    })
+                }
+            })
+        }
+        else if(type == "host"){
             swal({
                 title: 'Sei sicuro?',
                 text: 'Non potrai più tornare indietro!',
