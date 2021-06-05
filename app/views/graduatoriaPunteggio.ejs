@@ -1,28 +1,52 @@
-<div id='calendar-container'>   
-    <div id='calendar'></div>
-  </div>
+<%- include ('header') %>
+<%- include ('sidebar') %>
+<link href="/css/simple-sidebar.css" rel="stylesheet">
+<script type="text/javascript" src="/js/cookie.js"></script>
+<link rel="stylesheet" href="/css/atlantis.min.css">
+<link rel="stylesheet" href="/css/list.css">
 
-
-
-  <style>
-    html, body {
-      font-size: 14px;
-      background: #e2e2e2;
-    }
-    #calendar{
-      width: 80%;
-      margin-left: 100px;
-      box-shadow: 0px 0px 10px #000;
-      padding:15px; 
-      background: #fff;
-    }
-    #calendar-container {
-      position: fixed;
-      top: 0%;
-      text-align: center;
-      left: 10%;
-      right: 10%;
-      bottom: 20%;
-    }
-  </style>
+<div class="main-panel">
+    <div class="content">
+        <div class="panel-header bg-primary-gradient">
+            <div class="page-inner py-5">
+                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                    <div>
+                        <h2 class="text-white pb-2 fw-bold">Graduatoria</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table id="my_table" class="table table-striped">
+            <tbody>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Cognome</th>
+                <th scope="col">Punteggio</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <script>
   
+      $(document).ready(function() {
+        $.get( "/getGraduatoria", function(data) {
+          var i=1;
+        $.each(data, function(key, val) {
+            var pos = '<td>' + i+++ '</td>';
+            var tdStudenteNome = '<td>' + val.Name+ '</td>';
+            var tdStudenteCognome = '<td>' + val.Surname+ '</td>';
+            if(val.Punteggio == null){
+              var tdPunteggio = '<td>' + "In Attesa"+ '</td>';
+            }else {
+            var tdPunteggio = '<td>' + val.Punteggio+ '</td>';}
+            $('#my_table').append('<tr>' +pos+ tdStudenteNome+ tdStudenteCognome + tdPunteggio + '</tr>')
+        })
+      })
+      })
+  
+  </script>
+<%- include ('footer') %>
+                        
+                        

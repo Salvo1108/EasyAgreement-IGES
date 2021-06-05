@@ -69,20 +69,26 @@ class Appuntamento {
   }
 
   /**
-   * This method removes the appointment
-   * @param {Object} appuntamento- the appointment to remove
-   * @param {String} value_date - date appointment
+   * This method find the appointment by studentID
+   * @param {String} IDStudente- the studentID
    * @returns {Promise} - return a promise
    */
-  static removeAppuntamento (appuntamentoId,value_date) {
+   static getAppuntamentoByStudendID (IDStudente) {
     return new Promise(function (resolve, reject) {
       MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) reject(err)
         var dbo = db.db(dbName)
-        dbo.collection('Appuntamento').deleteOne( { _id: ObjectID(appuntamentoId) }, { date: value_date }, function (err, result) {
+        dbo.collection('Appuntamento').findOne({ title: "Studente: " + IDStudente }, function (err, result) {
           if (err) reject(err)
+          if (result != null) {
+            var appuntamento = new Appuntamento()
+            appuntamento.setTitle(result.title)
+            appuntamento.setStart(result.start)
+            resolve(appuntamento)
+          } else {
+            resolve(null)
+          }
           db.close()
-          resolve(result.deletedCount)
         })
       })
     })

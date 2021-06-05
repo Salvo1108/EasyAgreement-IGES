@@ -64,6 +64,11 @@ function dropDb(){
                                     if (err) throw err
                                     console.log('Succesfully deleted ' + result.deletedCount + ' Commission')
                                     resolve()
+                                    dbo.collection('Appuntamento').deleteMany({}, function (err, result) {
+                                      if (err) throw err
+                                      console.log('Succesfully deleted ' + result.deletedCount + ' Appuntamento')
+                                      resolve()
+                                    })
                                 })
                               })
                             })
@@ -80,4 +85,5 @@ function dropDb(){
       })
     })
   })
+})
 }

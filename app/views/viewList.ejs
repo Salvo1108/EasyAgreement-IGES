@@ -70,7 +70,7 @@
 				        '<h3>'+commissione.name+' '+commissione.surname+'</h3>',
 					    '<h4 class="toPass">'+commissione.email+'</h4>',
                         '<%if(session.utente.type == "admin"){%>',
-                        '<button class="btn btn-secondary btn-round form-group" class="deleteUserButton" id="delUser" onclick="clickDelete(commissione.email)">Elimina utente</button>',
+                        '<button class="btn btn-secondary btn-round form-group" class="deleteUserButton" id="delUser" onclick="clickDelete(this)">Elimina utente</button>',
                         '<%}%>',
 			        '</div>',
 		        '</div>',
@@ -200,7 +200,7 @@
         let type = $('.custom-select').val()
         let id = $(el.parentNode).children('.toPass').text()
         console.log(id)
-        if(type == "commission"){
+        if(type == "commissioneInter"){
             swal({
                 title: 'Sei sicuro?',
                 text: 'Non potrai più tornare indietro!',
@@ -214,7 +214,7 @@
                     $.ajax({
                         type:'POST',
                         url:'/deleteCommissioneInternazionale',
-                        data:{email:commissione.email},
+                        data:{email:id},
                         success: function(result){
                             if(result == "no"){
                                 swal('Errore', 'La cancellazione di un utente è limitata all\'admin', 'error')

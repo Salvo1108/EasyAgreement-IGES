@@ -14,7 +14,7 @@ class Commission {
   constructor () {
     this.name = null
     this.surname = null
-    this.password = null
+    this.Password = null
     this.email = null
   }
 
@@ -39,7 +39,7 @@ class Commission {
      * @returns {Object} - return password
      */
   getPassword () {
-    return this.password
+    return this.Password
   }
 
   /**
@@ -71,7 +71,7 @@ class Commission {
      * @param {Object} password - password
      */
   setPassword (password) {
-    this.password = password
+    this.Password = password
   }
 
   /**
@@ -167,7 +167,7 @@ class Commission {
     MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
       if (err) reject(err)
       var dbo = db.db(dbName)
-      dbo.collection('Commission').findOneAndDelete({ E_mail: email }, function (err, result) {
+      dbo.collection('Commission').findOneAndDelete({ email: email }, function (err, result) {
         if (err) throw err
         if (result.value != null) {
           resolve(true)

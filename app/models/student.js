@@ -23,6 +23,7 @@ class Student {
     this.CV = null
     this.IDCard = null
     this.Password = null
+    this.Punteggio = null
   }
 
   /**
@@ -106,6 +107,14 @@ class Student {
   }
 
   /**
+     * Get Punteggio
+     * @returns {String} - return punteggio
+     */
+   getPunteggio () {
+    return this.Punteggio
+  }
+
+  /**
      * Set name
      * @param {String} name - name
      */
@@ -183,6 +192,14 @@ class Student {
      */
   setStudentID (studentID) {
     this.StudentID = studentID
+  }
+
+  /**
+     * Set Punteggio
+     * @param {String} punteggio - punteggio
+     */
+   setPunteggio (punteggio) {
+    this.Punteggio = punteggio
   }
 
   /**
@@ -492,6 +509,45 @@ class Student {
       dbo.collection('Student').updateOne({ Email: email }, { $set: { IDCard: null } }, function (err, result) {
         if (err) throw err
         db.close()
+      })
+    })
+  }
+
+
+  /**
+   * This method inserts the punteggio
+   * @param {String} punteggio - the punteggio to insert
+   * @param {String} email - student's email
+   * @returns {Promise} - return a promise
+   */
+   static insertPunteggio (email,punteggio) {
+    return new Promise(function (resolve, reject) {
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+        if (err) reject(err)
+        var dbo = db.db(dbName)
+        dbo.collection('Student').updateOne({ Email: email }, { $set: { Punteggio: punteggio } }, function (err, result) {
+          if (err) throw err
+          resolve(result)
+          db.close()
+        })
+      })
+    })
+  }
+
+  /**
+   * This method gets all punteggi
+   * @returns {Promise} - return a promise
+   */
+  static getAllPunteggi () {
+    return new Promise(function (resolve, reject) {
+      MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
+        if (err) reject(err)
+        var dbo = db.db(dbName)
+        dbo.collection('Student').find({}).sort({ Punteggio: -1 }).toArray(function (err, result) {
+          if (err) throw err
+          resolve(result)
+          db.close()
+        })
       })
     })
   }

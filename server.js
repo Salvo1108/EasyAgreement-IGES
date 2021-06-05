@@ -111,6 +111,21 @@ app.get('/gestioneColloqui.html', function (req, res) {
   }
 })
 
+app.get('/gestioneGraduatoria.html', function (req, res) {
+  if (req.session.utente != null) {
+    if (req.session.utente.type == 'commission') {
+      res.render('gestioneGraduatoria.ejs')
+    } else {
+      res.cookie('onlyForCommission', '1')
+      res.redirect('/index.html')
+    }
+  } else {
+    res.cookie('cannotAccess', '1')
+    res.redirect('/')
+  }
+})
+
+
 app.get('/visualizzaCalendario.html', function (req, res) {
   if (req.session.utente != null) {
     if (req.session.utente.type == 'commission') {
@@ -147,10 +162,10 @@ app.get('/getallAppuntamenti', function (req, res) {
 
 app.get('/graduatoriaPunteggio.html', function (req, res) {
   if (req.session.utente != null) {
-    if (req.session.utente.type == 'commission') {
+    if (req.session.utente.type == 'student') {
       res.render('graduatoriaPunteggio.ejs')
     } else {
-      res.cookie('onlyForCommission', '1')
+      res.cookie('onlyForStudent', '1')
       res.redirect('/index.html')
     }
   } else {
@@ -173,7 +188,8 @@ app.get('/viewLA.html', function (req, res) {
   }
 })
 
-app.get('/getAllVersions', function (req, res) {s
+
+app.get('/getAllVersions', function (req, res) {
   if (req.session.utente != null) {
     if (req.session.utente.type == 'student') {
       var getVersionsPr = learningAgreementControl.getAllVersions(req.session.utente.utente.Email)
@@ -605,6 +621,26 @@ app.get('/getDetails', function (req, res) {
     res.redirect('/')
   }
 })
+
+app.get('/getGraduatoria', function (req, res) {
+    if (req.session.utente != null) {
+      if (req.session.utente.type == 'student') {
+          var getAllGraduatoria = studentControl.getAllPunteggi()
+          getAllGraduatoria.then(function (data) {
+            if (data) {
+              res.send(data)
+            }
+          })
+        }else {
+          res.cookie('onlyForStudent', '1')
+          res.redirect('/index.html')
+      }
+    } else {
+      res.cookie('cannotAccess', '1')
+      res.redirect('/')
+    }
+})
+
 
 app.get('/getRequest', function (req, res) {
   if (req.session.utente != null) {
@@ -1239,6 +1275,18 @@ app.post('/insertAppointment', function (req, res) {
       if (result) {
         res.cookie('insertAppunta', '1')
         res.redirect('/index.html')
+      } else {
+        res.redirect('/index.html')
+      }
+    })
+})
+
+app.post('/setPunteggioGrad', function (req, res) {
+  var punteggio = studentControl.insertPunteggio(req, res)
+  punteggio.then(function (result) {
+      if (result) {
+        res.cookie('setPunteggio', '1')
+        res.redirect('/gestioneGraduatoria.html')
       } else {
         res.redirect('/index.html')
       }

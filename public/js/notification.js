@@ -19,7 +19,9 @@ $.ajax({
   }
 })
 
-if (connectedUser.type == 'student') {
+if (connectedUser.type == 'commission') {
+  senderID = connectedUser.utente.email
+}else if (connectedUser.type == 'student') {
   senderID = connectedUser.utente.Email
 } else if (connectedUser.type == 'academicTutor') {
   senderID = connectedUser.utente.E_mail

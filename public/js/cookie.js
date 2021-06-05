@@ -84,6 +84,8 @@ $(document).ready(function () {
   var insertEff = getCookie('insertEff')
   var insertCommiIntern = getCookie('insertCommiIntern')
   var insertAppunta = getCookie('insertAppunta')
+  var setPunteggio = getCookie('setPunteggio')
+
   var errOrganizationEx = getCookie('errExOrganizationName')
   var onlyAdmin = getCookie('onlyForAdmin')
   var onlyStudent = getCookie('onlyForStudent')
@@ -115,6 +117,11 @@ $(document).ready(function () {
   if (insertAppunta == '1') {
     swal('Perfetto!', 'Appuntamento organizzato con successo', 'success')
     document.cookie = 'insertAppunta=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
+
+  if (setPunteggio == '1') {
+    swal('Perfetto!', 'Punteggio assegnato con successo', 'success')
+    document.cookie = 'setPunteggio=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
 
   if (alreadyRegH == '1') {

@@ -162,3 +162,40 @@ exports.getStudent = function (id) {
     })
   })
 }
+
+/**
+ * This method retrieves all appointment
+* @param {Object} req - The HTTP req
+ * @param {Object} res - The HTTP response
+ * @returns {Int} - 
+ */
+exports.getAllPunteggi = function () {
+  return new Promise(function (resolve, reject) {
+    var graduatoria = StudentModel.getAllPunteggi()
+    graduatoria.then(function (result) {
+      if (result.length > 0) {
+        resolve(result)
+      } else {
+        resolve(null)
+      }
+    })
+  })
+}
+
+
+/**
+ * This method inserts a specific punteggio
+* @param {Object} req - The HTTP req
+ * @param {Object} res - The HTTP res
+ * @returns {Boolean}  - This method returns true if the insert of punteggio was successfull, else false
+ */
+exports.insertPunteggio = function (req, res) {
+  return new Promise(function (resolve, reject) {
+    var email = req.query.email
+    var points = req.body.inputPunteggio
+    var inserted = StudentModel.insertPunteggio(email,points)
+    inserted.then(function (result) {
+      resolve(result)
+    })
+  })
+}

@@ -1,4 +1,6 @@
 const AppuntamentoModel = require('../models/appuntamento')
+var io = require('socket.io-client')
+var socket = io.connect('http://localhost:3000')
 /**
  * This method retrieves all appointment
 * @param {Object} req - The HTTP req
@@ -19,21 +21,6 @@ exports.getAllAppointments = function () {
 }
 
 /**
- * This method remove a specific notification
- * @param {String} id - the id of notification to remove
- * @param {Object} res - the HTTP response 
- * @returns {Boolean} - It returns true if the notification was removed successfull, else false
- */
-exports.removeNotification = function (id, res) {
-  return new Promise(function (resolve, reject) {
-    var deleted = NotificationModel.removeNotification(id)
-    deleted.then(function (result) {
-      resolve(true)
-    })
-  })
-}
-
-/**
  * This method inserts a specific appointment
 * @param {Object} req - The HTTP req
  * @param {Object} res - The HTTP res
@@ -42,46 +29,20 @@ exports.removeNotification = function (id, res) {
 exports.insertAppuntamento = function (req, res) {
   return new Promise(function (resolve, reject) {
     var date = req.body.inputDate
+    var dataNotifica = req.body.inputDate
     var studentID = req.query.studentID
+    var email = req.query.studentEmail
     var schedule = req.body.inputSchedule
     var appuntamento = new AppuntamentoModel()
     appuntamento.setTitle(studentID)
     appuntamento.setStart(date,schedule)
     var inserted = AppuntamentoModel.insertAppuntamento(appuntamento)
     inserted.then(function (result) {
+      var d = new Date()
+      var date = { hour: d.getHours().toString().padStart(2, 0), minutes: d.getMinutes().toString().padStart(2, 0), seconds: d.getSeconds().toString().padStart(2, 0), day: d.getDate().toString().padStart(2, 0), month: ((d.getMonth()) + 1).toString().padStart(2, 0), year: d.getFullYear().toString() }
+      socket.emit('send-notification', { associatedID: email, text: { title: 'Nuovo Colloquio', text: 'Il Commissario Internazionale ha fissato il colloquio per il giorno ' + dataNotifica + ", ore " + schedule }, date: date })
       resolve(result)
     })
   })
 }
 
-
-
-
-/**
- * This method refreshes the message cache
- * @param {String} associatedID - The notification's id
- * @param {Boolean} value - The state cache value
- * @returns {Object} - The update result
-  */
-exports.refreshNotificationCache = function (associatedId, value) {
-  return new Promise(function (resolve, reject) {
-    var refresh = NotificationModel.changeStateCache(associatedId, value)
-    refresh.then(function (result) {
-      resolve(result)
-    })
-  })
-}
-
-/**
- * This method gets all cache of message
- * @param {String} associatedID - The notification's id
- * @returns {Array} - The notification cache
- */
-exports.getNotificationCacheState = function (associatedID) {
-  return new Promise(function (resolve, reject) {
-    var get = NotificationModel.getStateCache(associatedID)
-    get.then(function (result) {
-      resolve(result)
-    })
-  })
-}

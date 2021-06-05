@@ -11,8 +11,8 @@
             <div class="page-inner py-5">
                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                     <div>
-                        <h2 class="text-white pb-2 fw-bold">Gestione Colloqui</h2>
-                        <h5 class="text-white op-7 mb-2">Seleziona lo studente per organizzare il colloquio</h5>
+                        <h2 class="text-white pb-2 fw-bold">Gestione Graduatoria</h2>
+                        <h5 class="text-white op-7 mb-2">Seleziona lo studente per assegnare un punteggio</h5>
                     </div>
                 </div>
             </div>
@@ -38,11 +38,9 @@
 		        '<div class="card__copy">',
 			        '<h3>'+student.Name+' '+student.Surname+'</h3>',
                     '<h4 class="toPass">'+student.StudentID+'</h4>',
-                    '<h4 class="toPass">'+student.Email+'</h4>',
-                    '<form method="POST" action="/insertAppointment?studentEmail='+student.Email+'&studentID='+student.StudentID+'">',
-                    '<input type="text" id="inputDate" class="form-control" name="inputDate" placeholder="Inserisci la data del colloquio (YYYY-MM-DD)" required >',
-                    '<input type="text" id="inputSchedule" class="form-control" name="inputSchedule" placeholder="Inserisci l\'orario del colloquio (HH:MM)" required >',
-                    '<button class="btn btn-secondary btn-round form-group" class="infoAppuntamentoButton" type="submit">Organizza Colloquio</button>',
+                    '<form method="POST" action="/setPunteggioGrad?email='+student.Email+'">',
+                    '<input type="text" id="inputPunteggio" class="form-control" name="inputPunteggio" placeholder="Inserisci il punteggio ottenuto" required >',
+                    '<button class="btn btn-secondary btn-round form-group" class="setPunteggio" type="submit">Assegna Punteggio</button>',
                     '</form>',
 		        '</div>',
             '</div>'].join('\n'))
@@ -63,8 +61,15 @@
                                     $('.elements').append('</section>')
                                 }
                             }
-                            appendStudentList(result[i])    
+                            if(result[i].Punteggio == null){
+                            appendStudentList(result[i])
+                            }
+                            else {
+                                $('.elements').append('</section>')
+                            }
+                            
                         }
+                    
                 })
     })
 

@@ -11,7 +11,7 @@ var commissioneModel = require('../models/commisioneInter.js')
  exports.deleteCommissionInternazionale = function (email, res) {
   return new Promise(function (resolve, reject) {
     var delcommInter = commissioneModel.deleteCommInter(email)
-    delExTutor.then(function (result) {
+    delcommInter.then(function (result) {
       if (!result) {
         resolve(false)
       } else {
