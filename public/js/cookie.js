@@ -56,6 +56,8 @@ $(document).ready(function () {
   var deletedID = getCookie('DeletedID')
   var deletedCV = getCookie('DeletedCV')
   var cannotAccess = getCookie('cannotAccess')
+  var formatDate = getCookie('formatoData')
+  var formatOra = getCookie('formatoOra')
   var errorID = getCookie('errorIDUpload')
   var errorCV = getCookie('errorCVUpload')
   var befDel = getCookie('beforeDelete')
@@ -134,7 +136,7 @@ $(document).ready(function () {
     document.cookie = 'errAlreadyRegEx=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
   if (alreadyCommiInter == '1') {
-    swal('Errore', 'Commissario Internazionale già presente', 'error')
+    swal('Errore', 'Inserimento non effettuato', 'error')
     document.cookie = 'alreadyCommiInter=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
   if (errErasmusCode == '1') {
@@ -298,6 +300,7 @@ $(document).ready(function () {
     $('#inputPassword').addClass('errClass')
     document.cookie = 'errPassword=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
+
   if (errPasswordConfirm == '1') {
     $('#errConfirmPassword').css('display', 'block')
     $('#inputConfirmPassword').addClass('errClass')
@@ -391,6 +394,16 @@ $(document).ready(function () {
     swal('Effettua l\'accesso', 'Per accedere a questa pagina devi prima effettuare l\'accessso', 'error')
     document.cookie = 'cannotAccess=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
   }
+
+  if(formatDate == '1') {
+    swal('ERRORE!', 'Formato data errato', 'error')
+    document.cookie = 'cannotAccess=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  } 
+
+  if(formatOra == '1') {
+    swal('ERRORE!', 'Formato ora errato', 'error')
+    document.cookie = 'cannotAccess=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  } 
 
   if (errorID == '1') {
     swal('Documento non caricato', 'Controlla il formato del file, accettiamo solo .pdf', 'error')

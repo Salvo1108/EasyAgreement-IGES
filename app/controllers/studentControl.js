@@ -192,10 +192,24 @@ exports.getAllPunteggi = function () {
 exports.insertPunteggio = function (req, res) {
   return new Promise(function (resolve, reject) {
     var email = req.query.email
+    //var email_Temp = req.body.email_Temp
+    var RegExpPunteggio = /^\d+$/
     var points = req.body.inputPunteggio
-    var inserted = StudentModel.insertPunteggio(email,points)
+    var isRight = true;
+
+    if(!points.match(RegExpPunteggio)){
+      isRight = false;
+    }
+
+    if (!isRight) {
+      resolve(false)
+      return
+    }
+
+    var punteggioConvertito = parseInt(points);
+    var inserted = StudentModel.insertPunteggio(email,punteggioConvertito)
     inserted.then(function (result) {
-      resolve(result)
+      resolve(true)
     })
   })
 }

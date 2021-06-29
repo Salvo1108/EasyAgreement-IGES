@@ -32,7 +32,28 @@ exports.insertAppuntamento = function (req, res) {
     var dataNotifica = req.body.inputDate
     var studentID = req.query.studentID
     var email = req.query.studentEmail
+    //var studentID_Temp = req.body.studentID_Temp
+    //var email_Temp = req.body.studentEmail_Temp
+    var RegExpData = /^\d{4}-\d{2}-\d{2}$/
+    var RegExpOra =  /^\d{1,2}[:][0-5][0-9]$/
+  
+
     var schedule = req.body.inputSchedule
+    var isRight = true;
+
+    if ((date == null) || (!date.match(RegExpData))) {
+      isRight = false
+    }
+     
+    if ((schedule == null) || (!schedule.match(RegExpOra))) {
+      isRight = false
+    }
+
+    if (!isRight) {
+      resolve(false)
+      return
+    }
+
     var appuntamento = new AppuntamentoModel()
     appuntamento.setTitle(studentID)
     appuntamento.setStart(date,schedule)
@@ -41,7 +62,7 @@ exports.insertAppuntamento = function (req, res) {
       var d = new Date()
       var date = { hour: d.getHours().toString().padStart(2, 0), minutes: d.getMinutes().toString().padStart(2, 0), seconds: d.getSeconds().toString().padStart(2, 0), day: d.getDate().toString().padStart(2, 0), month: ((d.getMonth()) + 1).toString().padStart(2, 0), year: d.getFullYear().toString() }
       socket.emit('send-notification', { associatedID: email, text: { title: 'Nuovo Colloquio', text: 'Il Commissario Internazionale ha fissato il colloquio per il giorno ' + dataNotifica + ", ore " + schedule }, date: date })
-      resolve(result)
+      resolve(true)
     })
   })
 }

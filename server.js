@@ -714,6 +714,12 @@ app.post('/updateProfile', function (req, res) {
 
 app.post('/updatePassword', function (req, res) {
   if (req.session.utente != null) {
+    if (req.session.utente.type == 'commission') {
+      var updateC =commissionControl.update(req, res)
+      updateC.then(function (result) {
+        if (result == true) { res.render('profile') } else { res.render('profile') }
+      })
+    } else
     if (req.session.utente.type == 'student') {
       var updateS = studentControl.updatePassword(req, res)
       updateS.then(function (result) {

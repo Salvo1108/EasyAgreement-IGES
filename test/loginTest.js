@@ -203,4 +203,79 @@ describe('Login  unit testing...', function () {
       done()
     })
   })
+
+    //TESTING AFTER UPDATE COMMISSARIO INTERNAZIONALE
+
+  it('testing method loginControl - TC_GC_1.1', function (done) {
+    var res = mockHttp.createResponse()
+    var req = { body: { username: 'm.c1@gmail.it', password: '' } }
+    var login = loginControl.login(req, res)
+    login.then(function (result) {
+      expect(result).to.not.be.null
+      done()
+    })
+  })
+
+  it('testing method loginControl - TC_GC_1.2', function (done) {
+    var res = mockHttp.createResponse()
+    var req = { body: { username: 'm%varriale%@campus.fr', password: '' } }
+    var login = loginControl.login(req, res)
+    login.then(function (result) {
+      expect(result).to.not.be.null
+      done()
+    })
+  })
+
+  it('testing method loginControl - TC_GC_1.3', function (done) {
+    var res = mockHttp.createResponse()
+    var req = { body: { username: 'sasa.amideo@commiss.internazionale.it', password: '1234567' } }
+    var login = loginControl.login(req, res)
+    login.then(function (result) {
+      expect(result).to.not.be.null
+      done()
+    })
+  })
+
+  it('testing method loginControl - TC_GC_1.4', function (done) {
+    var res = mockHttp.createResponse()
+    var req = { body: { username: 's.amideo@commiss.internazionale.it', password: '12' } }
+    var login = loginControl.login(req, res)
+    login.then(function (result) {
+      expect(result).to.not.be.null
+      done()
+    })
+  })
+
+  it('testing method loginControl - TC_GC_1.5', function (done) {
+    var res = mockHttp.createResponse()
+    var req = { body: { username: 's.amideo@commiss.internazionale.it', password: 'Querty&$' } }
+    var login = loginControl.login(req, res)
+    login.then(function (result) {
+      expect(result).to.not.be.null
+      done()
+    })
+  })
+
+  it('testing method loginControl - TC_GC_1.6', function (done) {
+    var res = mockHttp.createResponse()
+    var req = { body: { username: 's.amideo@commiss.internazionale.it', password: '1234567' } }
+    var login = loginControl.login(req, res)
+    login.then(function (result) {
+      expect(result).to.not.be.null
+      done()
+    })
+  })
+
+  it('testing method loginControl - TC_GC_1.7', function (done) {
+    var res = mockHttp.createResponse()
+    var req = { body: { username: 'salvatore.amideo@commis.internazionale.com', password: 'salvo123' } }
+    var login = loginControl.login(req, res)
+    login.then(function (result) {
+      expect(result).to.not.be.null
+      done()
+    })
+  })
+
+
+
 })

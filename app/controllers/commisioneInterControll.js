@@ -55,7 +55,7 @@ exports.update = function (req, res) {
       resolve(false)
       return
     }
-    if (hash.checkPassword(req.session.utente.utente.password.hash, req.session.utente.utente.password.salt, oldPassword)) {
+    if (hash.checkPassword(req.session.utente.utente.Password.hash, req.session.utente.utente.Password.salt, oldPassword)) {
       var passwordHashed = hash.hashPassword(password)
       var checkPass = commissioneModel.updatePassword(passwordHashed, req.session.utente.utente.email)
       /**
