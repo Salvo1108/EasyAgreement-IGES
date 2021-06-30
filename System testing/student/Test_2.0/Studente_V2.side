@@ -1,0 +1,214 @@
+{
+  "id": "95d0ffb3-76a1-4384-824f-9814d6bbd1c7",
+  "version": "2.0",
+  "name": "EasyAgreement_IGES",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "f0f08a6b-c2a0-41e9-a149-5f8d43260408",
+    "name": "Student_V2",
+    "commands": [{
+      "id": "0d46138f-d0c3-466a-b182-d66ad4d4ebc4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-label-group:nth-child(1) > label",
+      "targets": [
+        ["css=.form-label-group:nth-child(1) > label", "css:finder"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'E-mail')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7100a5c8-f491-4fc5-ac7b-ef6844b517a8",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputUsername",
+      "targets": [
+        ["id=inputUsername", "id"],
+        ["name=username", "name"],
+        ["css=#inputUsername", "css:finder"],
+        ["xpath=//input[@id='inputUsername']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "d.devito@studenti.unisa.it"
+    }, {
+      "id": "d2dc7481-70d8-4ad0-9c44-2a8553d605f9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-label-group:nth-child(2) > label",
+      "targets": [
+        ["css=.form-label-group:nth-child(2) > label", "css:finder"],
+        ["xpath=//div[2]/label", "xpath:position"],
+        ["xpath=//label[contains(.,'Password')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cecd188f-7af2-4887-9493-51f2e623b806",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputPassword",
+      "targets": [
+        ["id=inputPassword", "id"],
+        ["name=password", "name"],
+        ["css=#inputPassword", "css:finder"],
+        ["xpath=//input[@id='inputPassword']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "DannyDeVito1"
+    }, {
+      "id": "9a0716e0-86a3-4ce3-9d75-3b66c52d05f8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "db682092-a7ab-45fc-abc7-349d15de0782",
+      "comment": "",
+      "command": "click",
+      "target": "css=.swal-button",
+      "targets": [
+        ["css=.swal-button", "css:finder"],
+        ["xpath=//div[4]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0daafdd0-7530-4114-8f8c-be37ae7183b0",
+      "comment": "",
+      "command": "click",
+      "target": "id=open-notification",
+      "targets": [
+        ["id=open-notification", "id"],
+        ["css=#open-notification", "css:finder"],
+        ["xpath=//a[@id='open-notification']", "xpath:attributes"],
+        ["xpath=(//a[contains(@href, 'javascript:void(0)')])[2]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f737a68-569e-4f12-ab64-2e6c76fdb111",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.speech-bubble",
+      "targets": [
+        ["css=.speech-bubble", "css:finder"],
+        ["xpath=//a[@id='open-notification']/div", "xpath:idRelative"],
+        ["xpath=//li[2]/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5bd2c35a-f0fe-42ae-bc22-5fc5392dea82",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.speech-bubble",
+      "targets": [
+        ["css=.speech-bubble", "css:finder"],
+        ["xpath=//a[@id='open-notification']/div", "xpath:idRelative"],
+        ["xpath=//li[2]/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b087e40-3e74-4574-a28e-adeb397951b2",
+      "comment": "",
+      "command": "click",
+      "target": "id=delete-notification",
+      "targets": [
+        ["id=delete-notification", "id"],
+        ["css=.notification-div:nth-child(1) #delete-notification", "css:finder"],
+        ["xpath=//img[@alt='delete']", "xpath:img"],
+        ["xpath=//img[@id='delete-notification']", "xpath:attributes"],
+        ["xpath=//a[@id='open-notification']/div/div/div/a/img", "xpath:idRelative"],
+        ["xpath=//div/a/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e97827de-1e51-4e50-8631-e1c49fe394be",
+      "comment": "",
+      "command": "click",
+      "target": "css=.swal-button--confirm",
+      "targets": [
+        ["css=.swal-button--confirm", "css:finder"],
+        ["xpath=//div[4]/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "67a94cb3-6b76-43f6-96dc-73bc43dd3fc3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.swal-button",
+      "targets": [
+        ["css=.swal-button", "css:finder"],
+        ["xpath=//div[4]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2859c7c9-65f6-4ab1-95de-a46ac5f6c152",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Visualizza Bando",
+      "targets": [
+        ["linkText=Visualizza Bando", "linkText"],
+        ["css=.nav > .nav-item:nth-child(2) > a", "css:finder"],
+        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://web.unisa.it/uploads/rescue/164/4613/bando-erasmus-2021-2022.pdf')]", "xpath:href"],
+        ["xpath=//div/div/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Visualizza Bando')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "03a7ff4c-b0a6-482c-9176-9211a0e0c6a0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(5) p",
+      "targets": [
+        ["css=.nav-item:nth-child(5) p", "css:finder"],
+        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[5]/a/p", "xpath:idRelative"],
+        ["xpath=//li[5]/a/p", "xpath:position"],
+        ["xpath=//p[contains(.,'Visualizza Graduatoria')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "589a87c3-db07-4f0d-88a7-ffc86f5f5355",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=.btn-white", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/logout')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b774e458-c829-490c-a6f8-7e95975a56c3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.swal-button",
+      "targets": [
+        ["css=.swal-button", "css:finder"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "05635f1f-2ed3-4ebd-9c26-c856db222466",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f0f08a6b-c2a0-41e9-a149-5f8d43260408"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
