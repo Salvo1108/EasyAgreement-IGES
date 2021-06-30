@@ -1,27 +1,38 @@
 {
-  "id": "95d0ffb3-76a1-4384-824f-9814d6bbd1c7",
+  "id": "142348ef-f974-4fb5-8445-934749ddc28c",
   "version": "2.0",
   "name": "EasyAgreement_IGES",
   "url": "http://localhost:8080",
   "tests": [{
-    "id": "5131881d-d7c8-4483-aafb-09017ed75c7c",
-    "name": "Admin_V2",
+    "id": "d4e8157d-74d3-490c-8c99-a74f9139d855",
+    "name": "Admin_Login",
     "commands": [{
-      "id": "6a309345-d657-4f3e-947f-a1cb979df346",
+      "id": "3cccd06d-8733-47c6-90ad-1517b1faef69",
       "comment": "",
       "command": "open",
       "target": "/",
       "targets": [],
       "value": ""
     }, {
-      "id": "d0103399-10b9-4f53-9c28-665e9d05452f",
+      "id": "bde2a0e9-a50a-4d6a-a5bb-c64c40e3677d",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1680x1050",
+      "target": "1680x969",
       "targets": [],
       "value": ""
     }, {
-      "id": "ef57c566-45e1-44f6-bdc9-5d2a8a3ba59d",
+      "id": "f16d8fec-9e01-45a5-95ab-2d94a2047e84",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-label-group:nth-child(1) > label",
+      "targets": [
+        ["css=.form-label-group:nth-child(1) > label", "css:finder"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'E-mail')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ebb8dcd7-3a5f-45c1-920c-2ac40a257e6f",
       "comment": "",
       "command": "type",
       "target": "id=inputUsername",
@@ -34,7 +45,7 @@
       ],
       "value": "a.marino@unisa.it"
     }, {
-      "id": "d52eb233-6b08-4d03-8e01-7f4b73e2283f",
+      "id": "75b65cc7-fc4a-406e-922d-59707ea8b712",
       "comment": "",
       "command": "click",
       "target": "css=.form-label-group:nth-child(2) > label",
@@ -45,7 +56,7 @@
       ],
       "value": ""
     }, {
-      "id": "355aa04a-1caf-40cd-9b05-915ec135b6c2",
+      "id": "8230e23e-ff52-4d49-a566-08baf5a21955",
       "comment": "",
       "command": "type",
       "target": "id=inputPassword",
@@ -58,20 +69,19 @@
       ],
       "value": "andrea123"
     }, {
-      "id": "2733b65f-7951-434e-8f0e-20bde8df6195",
+      "id": "d3a29794-56c5-4c56-9bfd-2b73cd58ba44",
       "comment": "",
-      "command": "sendKeys",
-      "target": "id=inputPassword",
+      "command": "click",
+      "target": "css=.btn",
       "targets": [
-        ["id=inputPassword", "id"],
-        ["name=password", "name"],
-        ["css=#inputPassword", "css:finder"],
-        ["xpath=//input[@id='inputPassword']", "xpath:attributes"],
-        ["xpath=//div[2]/input", "xpath:position"]
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
       ],
-      "value": "${KEY_ENTER}"
+      "value": ""
     }, {
-      "id": "e71ae5c9-3382-434c-9872-5099fb50222e",
+      "id": "135c746b-422f-4d68-85a1-a1824ed38370",
       "comment": "",
       "command": "click",
       "target": "css=.swal-button",
@@ -81,19 +91,38 @@
         ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
       ],
       "value": ""
+    }]
+  }, {
+    "id": "858b1cba-9e62-4e81-bc2a-208aeb8e7669",
+    "name": "Admin_Inserimento_Commissario",
+    "commands": [{
+      "id": "1bcbe37b-d77a-4541-893e-c939e7f7b695",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
     }, {
-      "id": "3521a0d0-692c-452b-b13c-d46c61002011",
+      "id": "23e424a8-238c-4518-ba7d-ba698fafa5b0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ad86e99-2d39-46e7-b9d9-7e894f1b461c",
       "comment": "",
       "command": "click",
-      "target": "css=.nav-item:nth-child(4) p",
+      "target": "css=.nav-item:nth-child(4) > a",
       "targets": [
-        ["css=.nav-item:nth-child(4) p", "css:finder"],
-        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[4]/a/p", "xpath:idRelative"],
-        ["xpath=//li[4]/a/p", "xpath:position"]
+        ["css=.nav-item:nth-child(4) > a", "css:finder"],
+        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/addCommissioneInternazionale')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "1f3483b0-92e4-4ef4-ab50-17dfb0ad803f",
+      "id": "492f27c1-bf25-414b-bec1-9adb9e27b196",
       "comment": "",
       "command": "click",
       "target": "css=.form-label-group:nth-child(2) > label",
@@ -105,7 +134,7 @@
       ],
       "value": ""
     }, {
-      "id": "22fa606b-a7dd-44dd-9b02-9e25b9a82f19",
+      "id": "94e8af89-c7a8-4d5f-b53a-251a5e572fb5",
       "comment": "",
       "command": "type",
       "target": "id=inputNameCI",
@@ -119,7 +148,7 @@
       ],
       "value": "Gianluigi"
     }, {
-      "id": "7cfb93e7-521f-4588-ac9c-77014dd06c30",
+      "id": "6590ec2c-766d-4960-bfd1-a6b5dc1bcf13",
       "comment": "",
       "command": "click",
       "target": "css=.form-label-group:nth-child(3) > label",
@@ -131,7 +160,7 @@
       ],
       "value": ""
     }, {
-      "id": "fa699ada-658c-4c45-9934-05b2bf1d868c",
+      "id": "70987da0-743f-4db7-aa81-a7789850561f",
       "comment": "",
       "command": "type",
       "target": "id=inputSurnameCI",
@@ -145,7 +174,7 @@
       ],
       "value": "Attanasio"
     }, {
-      "id": "90650ccb-5de4-4e60-b9ac-60ab75de3d28",
+      "id": "caf45a97-5770-4be8-a3e0-fb16421699b2",
       "comment": "",
       "command": "click",
       "target": "css=.form-label-group:nth-child(4) > label",
@@ -157,7 +186,7 @@
       ],
       "value": ""
     }, {
-      "id": "4ec5153d-958e-4990-8152-b1ce1e05bfe2",
+      "id": "e9f302a3-7e21-45ab-9485-28d392d5094d",
       "comment": "",
       "command": "type",
       "target": "id=inputEmailCI",
@@ -171,7 +200,7 @@
       ],
       "value": "giangi.attan@gmail.com"
     }, {
-      "id": "411d4e7e-1775-40f4-b73e-199feb92fb08",
+      "id": "0846cfa3-e4df-466e-b2f2-2c38601a4be3",
       "comment": "",
       "command": "click",
       "target": "css=.form-label-group:nth-child(5) > label",
@@ -183,7 +212,7 @@
       ],
       "value": ""
     }, {
-      "id": "4daa3092-16d7-43f7-ae1c-16d2e9cf46c9",
+      "id": "2ecba997-75f9-4acd-b18c-84d684d4db12",
       "comment": "",
       "command": "type",
       "target": "id=inputPassword",
@@ -195,9 +224,9 @@
         ["xpath=//form[@id='formCompile']/div[4]/input", "xpath:idRelative"],
         ["xpath=//div[4]/input", "xpath:position"]
       ],
-      "value": "piccologatto123"
+      "value": "piccolocerbiatto123"
     }, {
-      "id": "6c29bef6-43d7-404c-a169-c289be7c874d",
+      "id": "e476d2f6-beaa-465f-b284-30733bd1bb3d",
       "comment": "",
       "command": "click",
       "target": "css=.form-label-group:nth-child(6) > label",
@@ -209,7 +238,7 @@
       ],
       "value": ""
     }, {
-      "id": "71e13666-1aa1-44db-8e8f-756eaa010cac",
+      "id": "79ac91ae-bdce-45f7-b576-8a6fb2650e2d",
       "comment": "",
       "command": "type",
       "target": "id=inputRePassword",
@@ -221,23 +250,23 @@
         ["xpath=//form[@id='formCompile']/div[5]/input", "xpath:idRelative"],
         ["xpath=//div[5]/input", "xpath:position"]
       ],
-      "value": "piccologatto123"
+      "value": "piccolocerbiatto123"
     }, {
-      "id": "69a9c376-098c-4875-bd0a-09361b65fc00",
+      "id": "6fec109c-d20b-4658-a52f-974f6983ec92",
       "comment": "",
-      "command": "sendKeys",
-      "target": "id=inputRePassword",
+      "command": "click",
+      "target": "id=send",
       "targets": [
-        ["id=inputRePassword", "id"],
-        ["name=inputRePassword", "name"],
-        ["css=#inputRePassword", "css:finder"],
-        ["xpath=//input[@id='inputRePassword']", "xpath:attributes"],
-        ["xpath=//form[@id='formCompile']/div[5]/input", "xpath:idRelative"],
-        ["xpath=//div[5]/input", "xpath:position"]
+        ["id=send", "id"],
+        ["css=#send", "css:finder"],
+        ["xpath=//button[@id='send']", "xpath:attributes"],
+        ["xpath=//form[@id='formCompile']/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Aggiungi')]", "xpath:innerText"]
       ],
-      "value": "${KEY_ENTER}"
+      "value": ""
     }, {
-      "id": "ca866438-eac2-4620-a0ff-fd20a11f8bc6",
+      "id": "baa0f69c-d3ae-456c-88e5-2c80e6d21321",
       "comment": "",
       "command": "click",
       "target": "css=.swal-button",
@@ -247,8 +276,26 @@
         ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
       ],
       "value": ""
+    }]
+  }, {
+    "id": "12e36c2c-5304-49ee-b344-6a0b4e5a5451",
+    "name": "Admin_Visualizza_Elimina_Commissario",
+    "commands": [{
+      "id": "f2888d35-9b98-4727-9bf4-e34bd3ff1bdd",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
     }, {
-      "id": "cfe7ae27-03d7-4201-813b-cdccac97781f",
+      "id": "09710ebd-88bf-47d0-ad8c-9c021a5a6dc5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "41c077bf-bd58-4356-8f12-95726183ccd5",
       "comment": "",
       "command": "click",
       "target": "css=.nav-item:nth-child(5) p",
@@ -259,7 +306,7 @@
       ],
       "value": ""
     }, {
-      "id": "d8689f51-c4c2-48d0-a7ed-340dba5c7eeb",
+      "id": "bf92262a-fc36-4fe9-99ac-59688bef7108",
       "comment": "",
       "command": "click",
       "target": "id=tipo",
@@ -272,14 +319,14 @@
       ],
       "value": ""
     }, {
-      "id": "9b9e32ba-3d4e-4d96-8f07-3da7a3ffd53e",
+      "id": "d9c583c4-37e6-4d58-b2f0-13d252600561",
       "comment": "",
       "command": "select",
       "target": "id=tipo",
       "targets": [],
       "value": "label=Commissione Internazionale"
     }, {
-      "id": "f2525750-87fd-4eb3-a633-16eabe7a4243",
+      "id": "1f457744-613a-4478-b348-5411b38fa1b4",
       "comment": "",
       "command": "click",
       "target": "css=.card:nth-child(4) #delUser",
@@ -290,7 +337,7 @@
       ],
       "value": ""
     }, {
-      "id": "2b5ee8a7-c1e2-46d9-a7f1-eb039ddec89a",
+      "id": "2705db43-e64e-4420-b1f3-eb440bb5698f",
       "comment": "",
       "command": "mouseOver",
       "target": "css=.card:nth-child(4) #delUser",
@@ -301,7 +348,7 @@
       ],
       "value": ""
     }, {
-      "id": "37e68ff6-11fa-4c27-94bc-313c02e8e809",
+      "id": "bef584df-3499-4688-af5c-2c06daecb845",
       "comment": "",
       "command": "mouseOut",
       "target": "css=.card:nth-child(4) #delUser",
@@ -312,7 +359,7 @@
       ],
       "value": ""
     }, {
-      "id": "6387a18a-8456-4c19-a0d7-8644f4a5da66",
+      "id": "ff2e33f0-0c4c-4324-bacb-91fc33d0f523",
       "comment": "",
       "command": "click",
       "target": "css=.swal-button--confirm",
@@ -323,7 +370,7 @@
       ],
       "value": ""
     }, {
-      "id": "480e7f60-cc51-4c36-a469-5c63140efaa0",
+      "id": "4e1a8cfd-7305-49f4-ac1d-c5cee3231e61",
       "comment": "",
       "command": "click",
       "target": "css=.swal-button",
@@ -333,8 +380,26 @@
         ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
       ],
       "value": ""
+    }]
+  }, {
+    "id": "9c943d15-9c15-475c-af94-4bc2365d054c",
+    "name": "Admin_Logout",
+    "commands": [{
+      "id": "23742a12-2dc4-4db3-891d-4fe12d44c878",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
     }, {
-      "id": "862881f0-8fde-45f2-a673-fe854c0dd2c8",
+      "id": "846d3e25-f9c1-418c-991e-12d65ab6dd41",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0aa1dfc6-3976-479f-8af0-47b432b23a5d",
       "comment": "",
       "command": "click",
       "target": "linkText=Logout",
@@ -348,7 +413,7 @@
       ],
       "value": ""
     }, {
-      "id": "8d049f85-7753-4517-b780-5593f2d267a0",
+      "id": "2c8c2f65-5329-4f17-85d4-3658926a3d05",
       "comment": "",
       "command": "click",
       "target": "css=.swal-button",
@@ -361,12 +426,12 @@
     }]
   }],
   "suites": [{
-    "id": "05635f1f-2ed3-4ebd-9c26-c856db222466",
+    "id": "056f9ea2-d421-4f9f-8dba-c99f3ccd22a2",
     "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": []
+    "tests": ["d4e8157d-74d3-490c-8c99-a74f9139d855"]
   }],
   "urls": ["http://localhost:8080/"],
   "plugins": []

@@ -1,0 +1,370 @@
+{
+  "id": "6d28de3d-a094-468b-a73b-f24b3c12753c",
+  "version": "2.0",
+  "name": "EasyAgreement_IGES",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "8eb66507-8a17-4985-a1e1-47a28f4d99ef",
+    "name": "Commissario_Login",
+    "commands": [{
+      "id": "29e11328-4171-4715-8e1b-0c53caede62f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "077e8bb5-06c3-4e10-bfda-2b1abe51d918",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cf25511b-cce5-43d2-8caa-924565399c8c",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputUsername",
+      "targets": [
+        ["id=inputUsername", "id"],
+        ["name=username", "name"],
+        ["css=#inputUsername", "css:finder"],
+        ["xpath=//input[@id='inputUsername']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "salvatore.amideo@commis.internazione.com"
+    }, {
+      "id": "c693c671-d68e-4d05-ba35-ce2fc6032a81",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-label-group:nth-child(2) > label",
+      "targets": [
+        ["css=.form-label-group:nth-child(2) > label", "css:finder"],
+        ["xpath=//div[2]/label", "xpath:position"],
+        ["xpath=//label[contains(.,'Password')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "69cb33c8-efcd-4f84-8737-135a05dde5e9",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputPassword",
+      "targets": [
+        ["id=inputPassword", "id"],
+        ["name=password", "name"],
+        ["css=#inputPassword", "css:finder"],
+        ["xpath=//input[@id='inputPassword']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "salvo123"
+    }, {
+      "id": "9371fd8e-5e69-425a-80b4-91fc9d7f1252",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4c2ff461-5056-429f-8ad6-0fca5f55f786",
+      "comment": "",
+      "command": "click",
+      "target": "css=.swal-button",
+      "targets": [
+        ["css=.swal-button", "css:finder"],
+        ["xpath=//div[4]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "4f23138f-fac0-4665-85e0-d76f6fabf9d9",
+    "name": "Commissario_Appuntamento",
+    "commands": [{
+      "id": "95495644-c67a-49c7-959e-b2b16410cdea",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "059c0284-2fed-46f2-94ca-d71e5876731c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e1a541f1-8bde-4e4e-990b-0dcecfac00b1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav > .nav-item:nth-child(2) > a",
+      "targets": [
+        ["css=.nav > .nav-item:nth-child(2) > a", "css:finder"],
+        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/gestioneColloqui.html')]", "xpath:href"],
+        ["xpath=//div/div/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cda0fc08-c711-4e36-abaf-4ad60b2664c4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(3) #inputDate",
+      "targets": [
+        ["css=.card:nth-child(3) #inputDate", "css:finder"],
+        ["xpath=(//input[@id='inputDate'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "66c18039-1982-42d6-8fca-499b2652b988",
+      "comment": "",
+      "command": "type",
+      "target": "css=.card:nth-child(3) #inputDate",
+      "targets": [
+        ["css=.card:nth-child(3) #inputDate", "css:finder"],
+        ["xpath=(//input[@id='inputDate'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/form/input", "xpath:position"]
+      ],
+      "value": "2021-05-12"
+    }, {
+      "id": "f831de0f-498b-4c05-8678-a469d7ecb0ef",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(3) #inputDate",
+      "targets": [
+        ["css=.card:nth-child(3) #inputDate", "css:finder"],
+        ["xpath=(//input[@id='inputDate'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "762ea5c4-2548-4b62-8c6d-efc76412f9e3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(3) #inputDate",
+      "targets": [
+        ["css=.card:nth-child(3) #inputDate", "css:finder"],
+        ["xpath=(//input[@id='inputDate'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "324b4336-159d-45ad-921e-457ec13bd248",
+      "comment": "",
+      "command": "type",
+      "target": "css=.card:nth-child(3) #inputDate",
+      "targets": [
+        ["css=.card:nth-child(3) #inputDate", "css:finder"],
+        ["xpath=(//input[@id='inputDate'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/form/input", "xpath:position"]
+      ],
+      "value": "2021-07-02"
+    }, {
+      "id": "5a2b0342-ca11-4f78-ac6a-ecaf388f86c2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(3) #inputSchedule",
+      "targets": [
+        ["css=.card:nth-child(3) #inputSchedule", "css:finder"],
+        ["xpath=(//input[@id='inputSchedule'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "32b7b4c4-823a-4641-9531-a2a915f80c96",
+      "comment": "",
+      "command": "type",
+      "target": "css=.card:nth-child(3) #inputSchedule",
+      "targets": [
+        ["css=.card:nth-child(3) #inputSchedule", "css:finder"],
+        ["xpath=(//input[@id='inputSchedule'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": "10:30"
+    }, {
+      "id": "cfa2006f-91ca-4851-a856-6a35e609eee9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(3) .btn",
+      "targets": [
+        ["css=.card:nth-child(3) .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "06b4713b-6fa9-481c-9e09-0d086351f8df",
+      "comment": "",
+      "command": "click",
+      "target": "css=.swal-button",
+      "targets": [
+        ["css=.swal-button", "css:finder"],
+        ["xpath=//div[4]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "09bd06ee-ecf7-455d-bb6d-efcc7c523247",
+    "name": "Commissario_Visualizza_Appuntamenti",
+    "commands": [{
+      "id": "e774223e-8131-4acd-b908-e5837f719e6a",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5b804394-abe2-4d2b-b494-5a95422f9356",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "098c3404-6138-4e6e-8b1b-055f419e06ed",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav > .nav-item:nth-child(3) > a",
+      "targets": [
+        ["css=.nav > .nav-item:nth-child(3) > a", "css:finder"],
+        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/visualizzaCalendario.html')]", "xpath:href"],
+        ["xpath=//div/div/ul/li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "bd251332-6f14-4717-9c94-7021cc999679",
+    "name": "Commissario_Punteggio",
+    "commands": [{
+      "id": "098f3e7d-0d7f-456f-b34d-1f8508c01cda",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3c6cba24-b162-4dc3-8bc5-ef878d827867",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6b233b5-f115-4a2c-be63-b4426933feb9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(4) p",
+      "targets": [
+        ["css=.nav-item:nth-child(4) p", "css:finder"],
+        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[4]/a/p", "xpath:idRelative"],
+        ["xpath=//li[4]/a/p", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d1d543e1-4ac4-482f-87a9-664b30831375",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(5) #inputPunteggio",
+      "targets": [
+        ["css=.card:nth-child(5) #inputPunteggio", "css:finder"],
+        ["xpath=(//input[@id='inputPunteggio'])[4]", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5df05e6-4ac2-4c4b-9227-00d28cc7ef22",
+      "comment": "",
+      "command": "type",
+      "target": "css=.card:nth-child(5) #inputPunteggio",
+      "targets": [
+        ["css=.card:nth-child(5) #inputPunteggio", "css:finder"],
+        ["xpath=(//input[@id='inputPunteggio'])[4]", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/form/input", "xpath:position"]
+      ],
+      "value": "56"
+    }, {
+      "id": "7b8ae447-cf10-427f-b97a-bacf1da53bed",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(5) .btn",
+      "targets": [
+        ["css=.card:nth-child(5) .btn", "css:finder"],
+        ["xpath=(//button[@type='submit'])[4]", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/form/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1acc38e5-b4d0-441f-9a7b-9b67af7f596f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.swal-button",
+      "targets": [
+        ["css=.swal-button", "css:finder"],
+        ["xpath=//div[4]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "28dfc5aa-4145-483c-923f-e84b0c044e47",
+    "name": "Commissario_Logout",
+    "commands": [{
+      "id": "309fc1e4-08c1-4e48-8fb4-a42cdb92523c",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5fc623d4-f37e-4db2-82c0-6c2f7e6c7099",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "949113d9-6b33-49c0-a26a-3cab29d33114",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=.btn-white", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/logout')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "51afa5dd-86e7-4124-aac6-fe75d25b567b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.swal-button",
+      "targets": [
+        ["css=.swal-button", "css:finder"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "c0aad167-b357-40d1-b00e-01d6bb5cbaea",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["8eb66507-8a17-4985-a1e1-47a28f4d99ef"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

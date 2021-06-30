@@ -1,24 +1,27 @@
 {
-  "id": "95d0ffb3-76a1-4384-824f-9814d6bbd1c7",
+  "id": "ff823b2b-cfe5-490f-ace0-8bbe62d26b1d",
   "version": "2.0",
   "name": "EasyAgreement_IGES",
   "url": "http://localhost:8080",
   "tests": [{
-    "id": "f0f08a6b-c2a0-41e9-a149-5f8d43260408",
-    "name": "Student_V2",
+    "id": "4934337c-573a-4661-9a95-870006d6c411",
+    "name": "Studente_Login",
     "commands": [{
-      "id": "0d46138f-d0c3-466a-b182-d66ad4d4ebc4",
+      "id": "0c372e88-45f3-4946-a986-3d3d6bbc7c0c",
       "comment": "",
-      "command": "click",
-      "target": "css=.form-label-group:nth-child(1) > label",
-      "targets": [
-        ["css=.form-label-group:nth-child(1) > label", "css:finder"],
-        ["xpath=//label", "xpath:position"],
-        ["xpath=//label[contains(.,'E-mail')]", "xpath:innerText"]
-      ],
+      "command": "open",
+      "target": "/",
+      "targets": [],
       "value": ""
     }, {
-      "id": "7100a5c8-f491-4fc5-ac7b-ef6844b517a8",
+      "id": "61396aab-95f0-410b-83c3-c04040cf60fd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9aee9ad4-d1b8-4e80-9410-b95d67477474",
       "comment": "",
       "command": "type",
       "target": "id=inputUsername",
@@ -31,7 +34,7 @@
       ],
       "value": "d.devito@studenti.unisa.it"
     }, {
-      "id": "d2dc7481-70d8-4ad0-9c44-2a8553d605f9",
+      "id": "8e171148-ea08-4b2d-a8bd-3a100ff55fca",
       "comment": "",
       "command": "click",
       "target": "css=.form-label-group:nth-child(2) > label",
@@ -42,7 +45,18 @@
       ],
       "value": ""
     }, {
-      "id": "cecd188f-7af2-4887-9493-51f2e623b806",
+      "id": "2bbe1270-c01e-4b1e-81ec-051731acc7e8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.form-label-group:nth-child(2) > label",
+      "targets": [
+        ["css=.form-label-group:nth-child(2) > label", "css:finder"],
+        ["xpath=//div[2]/label", "xpath:position"],
+        ["xpath=//label[contains(.,'Password')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "58f738e4-9fe8-4298-88d0-6bc38dfb11af",
       "comment": "",
       "command": "type",
       "target": "id=inputPassword",
@@ -55,7 +69,7 @@
       ],
       "value": "DannyDeVito1"
     }, {
-      "id": "9a0716e0-86a3-4ce3-9d75-3b66c52d05f8",
+      "id": "cf683716-3df0-4975-a4b9-bcc4ff356bc7",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
@@ -67,7 +81,7 @@
       ],
       "value": ""
     }, {
-      "id": "db682092-a7ab-45fc-abc7-349d15de0782",
+      "id": "18092c14-901c-4cbb-92a0-e89f09c257bd",
       "comment": "",
       "command": "click",
       "target": "css=.swal-button",
@@ -77,8 +91,130 @@
         ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
       ],
       "value": ""
+    }]
+  }, {
+    "id": "bfb3898e-b191-41ed-a64d-bdaefab3e1e2",
+    "name": "Studente_Visualizza_Bando",
+    "commands": [{
+      "id": "660f80a7-3854-446f-8bbc-5c3dc32cc220",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
     }, {
-      "id": "0daafdd0-7530-4114-8f8c-be37ae7183b0",
+      "id": "2fef998d-f5a3-4b34-88a9-d85156cd36ef",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f31ec2ab-244d-47c9-9094-7490a686cb20",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(2) p",
+      "targets": [
+        ["css=.nav-item:nth-child(2) p", "css:finder"],
+        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[2]/a/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'Visualizza Bando')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "35917e28-01a7-467d-a80b-27fb45dee617",
+    "name": "Studente_Visualizza_Graduatoria",
+    "commands": [{
+      "id": "9ec8291d-d273-43af-8c78-49160e5ad969",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "917a4f5d-9d6d-4e02-a7f1-17eb1e5b9799",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "841e591f-0317-4d5f-9eaa-4a1f655565ad",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(5) p",
+      "targets": [
+        ["css=.nav-item:nth-child(5) p", "css:finder"],
+        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[5]/a/p", "xpath:idRelative"],
+        ["xpath=//li[5]/a/p", "xpath:position"],
+        ["xpath=//p[contains(.,'Visualizza Graduatoria')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "1c9c5e8a-88bf-40cc-9768-fce4df2a7d91",
+    "name": "Studente_Visualizza_Notifica_Appuntamento",
+    "commands": [{
+      "id": "d4709018-e1fa-4498-ad67-ebf14e85db44",
+      "comment": "",
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "184288e5-edfe-447f-b786-5d5d6bd40a58",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "452f045d-c96f-499f-b8de-a75d62ea68f5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-bell",
+      "targets": [
+        ["css=.fa-bell", "css:finder"],
+        ["xpath=//a[@id='open-notification']/i", "xpath:idRelative"],
+        ["xpath=//li[2]/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dff13923-baf8-413a-841e-a9dba40e49de",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.speech-bubble",
+      "targets": [
+        ["css=.speech-bubble", "css:finder"],
+        ["xpath=//a[@id='open-notification']/div", "xpath:idRelative"],
+        ["xpath=//li[2]/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "22bb3270-2886-41d0-b733-90ae460175ba",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.speech-bubble",
+      "targets": [
+        ["css=.speech-bubble", "css:finder"],
+        ["xpath=//a[@id='open-notification']/div", "xpath:idRelative"],
+        ["xpath=//li[2]/a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef02c783-9d71-437c-9807-ac8f424b4c9b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.notification-div:nth-child(1)",
+      "targets": [
+        ["css=.notification-div:nth-child(1)", "css:finder"],
+        ["xpath=//a[@id='open-notification']/div/div/div", "xpath:idRelative"],
+        ["xpath=//a/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4e203df5-4c22-49cd-8e59-7fdc05675bde",
       "comment": "",
       "command": "click",
       "target": "id=open-notification",
@@ -91,7 +227,7 @@
       ],
       "value": ""
     }, {
-      "id": "5f737a68-569e-4f12-ab64-2e6c76fdb111",
+      "id": "0c88db3e-b870-4ddb-bbb4-38685ae9ed99",
       "comment": "",
       "command": "mouseOver",
       "target": "css=.speech-bubble",
@@ -102,7 +238,7 @@
       ],
       "value": ""
     }, {
-      "id": "5bd2c35a-f0fe-42ae-bc22-5fc5392dea82",
+      "id": "5f695fee-2420-4ca8-b46e-6dfadb956a47",
       "comment": "",
       "command": "mouseOut",
       "target": "css=.speech-bubble",
@@ -113,7 +249,7 @@
       ],
       "value": ""
     }, {
-      "id": "8b087e40-3e74-4574-a28e-adeb397951b2",
+      "id": "3868c650-2ea2-46be-9e2e-6382b1c39117",
       "comment": "",
       "command": "click",
       "target": "id=delete-notification",
@@ -127,7 +263,7 @@
       ],
       "value": ""
     }, {
-      "id": "e97827de-1e51-4e50-8631-e1c49fe394be",
+      "id": "cdc2681e-388d-4903-8a8e-16299804341b",
       "comment": "",
       "command": "click",
       "target": "css=.swal-button--confirm",
@@ -138,7 +274,7 @@
       ],
       "value": ""
     }, {
-      "id": "67a94cb3-6b76-43f6-96dc-73bc43dd3fc3",
+      "id": "262fa1ff-2a24-424a-b3a2-89017874fb8a",
       "comment": "",
       "command": "click",
       "target": "css=.swal-button",
@@ -148,34 +284,26 @@
         ["xpath=//button[contains(.,'OK')]", "xpath:innerText"]
       ],
       "value": ""
-    }, {
-      "id": "2859c7c9-65f6-4ab1-95de-a46ac5f6c152",
+    }]
+  }, {
+    "id": "6fc2d8fd-dace-4584-9ca8-24affb3caec1",
+    "name": "Studente_Logout",
+    "commands": [{
+      "id": "8883f772-dee2-4abe-a6dd-174b782e12e5",
       "comment": "",
-      "command": "click",
-      "target": "linkText=Visualizza Bando",
-      "targets": [
-        ["linkText=Visualizza Bando", "linkText"],
-        ["css=.nav > .nav-item:nth-child(2) > a", "css:finder"],
-        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[2]/a", "xpath:idRelative"],
-        ["xpath=//a[contains(@href, 'https://web.unisa.it/uploads/rescue/164/4613/bando-erasmus-2021-2022.pdf')]", "xpath:href"],
-        ["xpath=//div/div/ul/li[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'Visualizza Bando')]", "xpath:innerText"]
-      ],
+      "command": "open",
+      "target": "/index.html",
+      "targets": [],
       "value": ""
     }, {
-      "id": "03a7ff4c-b0a6-482c-9176-9211a0e0c6a0",
+      "id": "cb7438c8-115e-48bb-bf9b-13e6d36adb8c",
       "comment": "",
-      "command": "click",
-      "target": "css=.nav-item:nth-child(5) p",
-      "targets": [
-        ["css=.nav-item:nth-child(5) p", "css:finder"],
-        ["xpath=//div[@id='sidebar']/div/div/div/ul/li[5]/a/p", "xpath:idRelative"],
-        ["xpath=//li[5]/a/p", "xpath:position"],
-        ["xpath=//p[contains(.,'Visualizza Graduatoria')]", "xpath:innerText"]
-      ],
+      "command": "setWindowSize",
+      "target": "1680x969",
+      "targets": [],
       "value": ""
     }, {
-      "id": "589a87c3-db07-4f0d-88a7-ffc86f5f5355",
+      "id": "696f80dd-b8c5-4859-891e-ee28d234c475",
       "comment": "",
       "command": "click",
       "target": "linkText=Logout",
@@ -189,7 +317,7 @@
       ],
       "value": ""
     }, {
-      "id": "b774e458-c829-490c-a6f8-7e95975a56c3",
+      "id": "8aef9206-f9bf-4508-8792-5072e6d9a26b",
       "comment": "",
       "command": "click",
       "target": "css=.swal-button",
@@ -202,12 +330,12 @@
     }]
   }],
   "suites": [{
-    "id": "05635f1f-2ed3-4ebd-9c26-c856db222466",
+    "id": "5bbc4f70-2223-4fb8-95af-67acf867a0a8",
     "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["f0f08a6b-c2a0-41e9-a149-5f8d43260408"]
+    "tests": ["4934337c-573a-4661-9a95-870006d6c411"]
   }],
   "urls": ["http://localhost:8080/"],
   "plugins": []
