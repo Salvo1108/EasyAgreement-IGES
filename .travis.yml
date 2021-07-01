@@ -1,13 +1,12 @@
-sudo: false
-
 language: node_js
-
 node_js:
-  - node
-
-scripts:
-  - npm run lint
-  - npm run coverage
-
-notifications:
-  email: false
+ - "node"
+services:
+ - mongodb
+install:
+ - sudo snap install pdftk
+ - source installdb.sh
+ - npm install
+script:
+ - npm test
+ - npm run coverage
