@@ -1,0 +1,13 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - node
+
+scripts:
+  - npm run lint
+  - npm run coverage
+
+notifications:
+  email: false
