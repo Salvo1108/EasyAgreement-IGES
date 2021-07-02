@@ -7,7 +7,6 @@ install:
  - sudo snap install pdftk
  - source installdb.sh
  - npm install
- - mocha
 script:
  - npm test
  - npm run coverage
