@@ -121,7 +121,7 @@ exports.updatePassword = function (req, res) {
       })
     } else {
       res.cookie('errOldPassword', '1')
-      
+      resolve(true)
     }
   })
 }
